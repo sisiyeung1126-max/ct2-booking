@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra Sea 2A — CT2 單位預約格仔表及同事收樓管理平台</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F1F5F9;
+      color: #0F172A;
+    }
+
+    /* Status Cell Colors matching CT2_Booking_Grid.xlsx */
+    .cell-normal {
+      background-color: #CBD5E1;
+      color: #0F172A;
+      border-color: #94A3B8;
+    }
+    .cell-normal:hover {
+      background-color: #94A3B8;
+    }
+    .cell-updated {
+      background-color: #93C5FD;
+      color: #0C2D57;
+      border-color: #60A5FA;
+    }
+    .cell-updated:hover {
+      background-color: #60A5FA;
+    }
+    .cell-new {
+      background-color: #FDE047;
+      color: #422006;
+      border-color: #FACC15;
+    }
+    .cell-new:hover {
+      background-color: #FACC15;
+    }
+    .cell-cancelled {
+      background-color: #FECDD3;
+      color: #7F1D1D;
+      border-color: #FDA4AF;
+    }
+    .cell-cancelled:hover {
+      background-color: #FDA4AF;
+    }
+    .cell-special {
+      background-color: #F1F5F9;
+      color: #64748B;
+      font-weight: 600;
+    }
+    .row-22-bg {
+      background-color: #E2E8F0;
+    }
+
+    .grid-table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 820px;
+    }
+    .grid-table th,
+    .grid-table td {
+      border: 1px solid #CBD5E1;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .zone-divider td {
+      border-bottom: 2px solid #475569 !important;
+    }
+    .staff-col-border {
+      border-right: 2px solid #64748B !important;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF;
+      }
+      .print-shadow-none {
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Header Banner -->
+  <header class="bg-[#1B4F72] text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+      <div>
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span class="bg-sky-400/20 border border-sky-300/40 text-sky-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">Sierra Sea 2A · CT2</span>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight">CT2 單位預約格仔表及負責同事查看平台</h1>
+        </div>
+        <p class="text-xs sm:text-sm text-sky-100/90 mt-1">
+          涵蓋日期：2026/10/11 至 2026/11/07 ｜ 資料更新時間：<span id="lastUpdatedLabel">2026/10/22 14:16 (已同步最新 SS 2A Booking List)</span>
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-2 no-print">
+        <button id="btnCopyShare" type="button" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg shadow-sm transition">
+          <span>📋 複製目前清單文字</span>
+        </button>
+        <button id="btnPrint" type="button" class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-medium px-3 py-1.5 rounded-lg transition">
+          <span>🖨️ 列印 / 存為 PDF</span>
+        </button>
+        <button id="btnResetData" type="button" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-rose-600/80 text-white text-xs font-medium px-2.5 py-1.5 rounded-lg transition" title="還原預設資料">
+          <span>↺ 還原預設</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl w-full mx-auto px-3 sm:px-4 py-4 flex-1 space-y-4">
+
+    <!-- Status Filter Pills & Stats Bar -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <!-- Status Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5" id="statusFilterBar">
+          <span class="text-xs font-semibold text-slate-500 mr-1">狀態篩選：</span>
+          <button type="button" data-status="all" class="status-pill active-pill px-3 py-1.5 rounded-lg text-xs font-bold border transition bg-slate-800 text-white border-slate-800">
+            全部 (<span id="count-all">34</span>)
+          </button>
+          <button type="button" data-status="normal" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-[#CBD5E1] text-slate-900 border-slate-400 hover:opacity-90">
+            【淺灰】一般預約 (<span id="count-normal">21</span>)
+          </button>
+          <button type="button" data-status="updated" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-[#93C5FD] text-[#0C2D57] border-blue-400 hover:opacity-90">
+            【藍色】更新預約 (<span id="count-updated">8</span>)
+          </button>
+          <button type="button" data-status="new" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-[#FDE047] text-[#422006] border-yellow-400 hover:opacity-90">
+            【黃色】新預約 (<span id="count-new">4</span>)
+          </button>
+          <button type="button" data-status="cancelled" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-[#FECDD3] text-[#7F1D1D] border-rose-300 hover:opacity-90">
+            【粉紅】已取消 (<span id="count-cancelled">1</span>)
+          </button>
+          <button type="button" data-status="vip" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100">
+            ⭐ VIP 單位 (<span id="count-vip">10</span>)
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-64 no-print">
+          <input id="searchInput" type="text" placeholder="搜尋單位 (如 21D)、日期、備註..." class="w-full pl-3 pr-8 py-1.5 text-xs sm:text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-600 focus:bg-white">
+          <button id="btnClearSearch" type="button" class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold px-1">✕</button>
+        </div>
+      </div>
+
+      <!-- Colleague Quick Filter Bar -->
+      <div class="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-1.5" id="staffFilterBar">
+        <span class="text-xs font-semibold text-slate-500 mr-1">負責同事：</span>
+        <!-- Populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- Selected Colleague Banner (Shown when a specific staff member is selected) -->
+    <section id="selectedStaffBanner" class="hidden bg-gradient-to-r from-sky-900 to-slate-800 text-white rounded-xl p-4 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs uppercase tracking-wider bg-sky-500/30 text-sky-200 px-2 py-0.5 rounded font-semibold">負責同事專區</span>
+            <h2 id="bannerStaffName" class="text-lg font-bold">黃浩賢</h2>
+            <a id="bannerStaffPhone" href="tel:96899734" class="text-xs bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-full font-medium transition">📞 9689 9734</a>
+          </div>
+          <p id="bannerStaffFloors" class="text-xs text-sky-100/90 mt-1">負責樓層：22/F, 21/F, 20/F ｜ 區內預約共 7 宗</p>
+        </div>
+        <div class="flex items-center gap-2 no-print">
+          <button id="btnShowAllStaff" type="button" class="text-xs bg-white text-slate-900 hover:bg-slate-100 font-semibold px-3 py-1.5 rounded-lg transition">
+            返回全部同事
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- View Mode Switcher & Grid Controls -->
+    <div class="flex flex-wrap items-center justify-between gap-2 no-print">
+      <div class="inline-flex bg-slate-200/80 p-1 rounded-xl">
+        <button type="button" id="tabGrid" class="view-tab bg-white text-slate-900 shadow-sm px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition">
+          🏢 樓層格仔表
+        </button>
+        <button type="button" id="tabList" class="view-tab text-slate-600 hover:text-slate-900 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition">
+          📅 預約明細清單 (<span id="filteredListCount">34</span>)
+        </button>
+        <button type="button" id="tabStaffCards" class="view-tab text-slate-600 hover:text-slate-900 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition">
+          👥 同事分區總覽 (7組)
+        </button>
+      </div>
+
+      <!-- Grid Cell Format Toggle -->
+      <div id="gridModeControls" class="flex items-center gap-2">
+        <span class="text-xs text-slate-500 hidden sm:inline">點擊任何單位格可查看完整備註或修改預約</span>
+        <div class="inline-flex bg-white border border-slate-200 rounded-lg p-0.5 text-xs">
+          <button type="button" id="btnModeFull" class="px-2.5 py-1 rounded-md font-semibold bg-sky-700 text-white transition">
+            日期＋時間
+          </button>
+          <button type="button" id="btnModeDateOnly" class="px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 transition">
+            純日期 (DD/MM)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: GRID VIEW -->
+    <section id="viewGridSection" class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden print-shadow-none">
+      <div class="overflow-x-auto">
+        <table class="grid-table">
+          <thead>
+            <tr class="bg-[#B7DEE8] text-slate-900 text-xs sm:text-sm font-bold h-12">
+              <th class="bg-[#0070C0] text-white text-[11px] leading-tight w-16 px-1">正單<br>留匙(2)<br>預約(1)</th>
+              <th class="bg-[#0070C0] text-white text-[11px] leading-tight w-16 px-1">副單<br>留匙(2)<br>預約(2)</th>
+              <th class="w-24 px-2 staff-col-border">負責同事</th>
+              <th class="w-16 px-2 staff-col-border">樓層</th>
+              <th class="w-24">A</th>
+              <th class="w-24">B</th>
+              <th class="w-24">C</th>
+              <th class="w-24">D</th>
+              <th class="w-24">E</th>
+              <th class="w-24">F</th>
+              <th class="w-24">G</th>
+              <th class="w-24">H</th>
+              <th class="w-24">J</th>
+            </tr>
+          </thead>
+          <tbody id="gridTableBody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-slate-50 px-4 py-2.5 border-t border-slate-200 text-xs text-slate-600 leading-relaxed">
+        <strong class="text-slate-800">重點備註摘要（含 10/22 新增）：</strong>
+        <span class="inline-block mr-2">• <strong>[12C, 08G]</strong> 25/10 一同 10:30 收樓 (XD8428)</span>
+        <span class="inline-block mr-2">• <strong>[19C]</strong> 28/10 與 CT3-12F, 15F 一同 15:30 收樓 (WF1591)</span>
+        <span class="inline-block mr-2">• <strong>[21H, 19H, 16H]</strong> 29/10 一同 14:00 收樓 (巴士候車室)</span>
+        <span class="inline-block mr-2">• <strong>[18D]</strong> 03/11 與 CT5-21C 一同 14:00 收樓 (ND902)</span>
+        <span class="inline-block mr-2">• <strong>[21D]</strong> 與 CT5-22B 14:00 一同收樓 (VIP)</span>
+        <span class="inline-block mr-2">• <strong>[19D, 11G]</strong> 同業主 (VIP, YU807) 11:15</span>
+        <span class="inline-block mr-2">• <strong>[20G, 18B, 12G, 09G]</strong> 與 CT3-19A 同業主 VIP 14:00 收樓</span>
+        <span class="inline-block mr-2">• <strong>[18H, 15H]</strong> 與 CT1-16B 同業主 14:00 收樓 (DR1428)</span>
+        <span class="inline-block mr-2">• <strong>[17H]</strong> 與 CT1-16E, 16F 同業主 14:00 收樓 (PZ2007)</span>
+        <span class="inline-block mr-2">• <strong>[12H, 07B]</strong> 親屬 14:00 收樓 (NA5970，有線拍攝待確定)</span>
+        <span class="inline-block mr-2">• <strong>[10G]</strong> 與 CT1-1G, 10A, 11A 同業主 11:15 收樓 (PN996/ST722)</span>
+      </div>
+    </section>
+
+    <!-- VIEW 2: SCHEDULE LIST VIEW -->
+    <section id="viewListSection" class="hidden bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="px-4 py-3 border-b border-slate-200 flex flex-wrap items-center justify-between gap-2 bg-slate-50">
+        <h3 class="text-sm font-bold text-slate-800">CT2 單位預約清單明細（按日期及時間排序）</h3>
+        <div class="flex items-center gap-2 text-xs">
+          <label for="sortSelect" class="text-slate-500 font-medium">排序方式：</label>
+          <select id="sortSelect" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-600">
+            <option value="date">按預約日期及時間</option>
+            <option value="floor">按樓層高低 (22/F → G1)</option>
+            <option value="staff">按負責同事分區</option>
+          </select>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700 text-xs font-bold border-b border-slate-200">
+              <th class="py-2.5 px-3">日期</th>
+              <th class="py-2.5 px-3">時間</th>
+              <th class="py-2.5 px-3">單位</th>
+              <th class="py-2.5 px-3">負責同事 (電話)</th>
+              <th class="py-2.5 px-3">備註</th>
+              <th class="py-2.5 px-3">狀態</th>
+              <th class="py-2.5 px-3 text-right no-print">操作</th>
+            </tr>
+          </thead>
+          <tbody id="listTableBody" class="divide-y divide-slate-200 text-xs sm:text-sm">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIEW 3: STAFF CARDS VIEW -->
+    <section id="viewStaffCardsSection" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Populated by JS -->
+    </section>
+
+  </main>
+
+  <!-- Unit Detail & Edit Modal -->
+  <div id="unitModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 no-print">
+    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full overflow-hidden border border-slate-200">
+      <div class="bg-[#1B4F72] text-white px-5 py-3.5 flex items-center justify-between">
+        <div>
+          <span id="modalZoneBadge" class="text-[11px] bg-white/20 px-2 py-0.5 rounded font-medium">負責同事：黃浩賢</span>
+          <h3 id="modalUnitTitle" class="text-lg font-bold mt-0.5">CT2 21D 室</h3>
+        </div>
+        <button id="btnCloseModal" type="button" class="text-white/80 hover:text-white text-lg font-bold px-2 py-1">✕</button>
+      </div>
+
+      <form id="unitEditForm" class="p-5 space-y-3.5 text-sm">
+        <input type="hidden" id="modalFloorKey">
+        <input type="hidden" id="modalUnitKey">
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="inputDateShort" class="block text-xs font-semibold text-slate-600 mb-1">格仔顯示日期 (DD/MM)</label>
+            <input id="inputDateShort" type="text" placeholder="例如 21/10" class="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+          <div>
+            <label for="inputTime" class="block text-xs font-semibold text-slate-600 mb-1">預約時間 (HH:MM)</label>
+            <input id="inputTime" type="text" placeholder="例如 14:00" class="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-600">
+          </div>
+        </div>
+
+        <div>
+          <label for="inputFullDate" class="block text-xs font-semibold text-slate-600 mb-1">完整日期顯示</label>
+          <input id="inputFullDate" type="text" placeholder="例如 2026/10/21 (星期三)" class="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-600">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="inputStatus" class="block text-xs font-semibold text-slate-600 mb-1">預約狀態（底色）</label>
+            <select id="inputStatus" class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-600">
+              <option value="normal">一般預約（淺灰色）</option>
+              <option value="updated">更新預約（藍色）</option>
+              <option value="new">新預約（黃色）</option>
+              <option value="cancelled">已取消（粉紅色）</option>
+              <option value="empty">無預約（空白）</option>
+            </select>
+          </div>
+          <div class="flex items-end pb-1">
+            <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+              <input id="inputVip" type="checkbox" class="w-4 h-4 text-sky-600 rounded border-slate-300 focus:ring-sky-500">
+              <span class="text-sm font-semibold text-slate-700">⭐ VIP 客戶</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="inputNote" class="block text-xs font-semibold text-slate-600 mb-1">收樓備註（同業主／親屬／改期紀錄）</label>
+          <textarea id="inputNote" rows="3" placeholder="輸入收樓備註..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-600"></textarea>
+        </div>
+
+        <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200">
+          <button id="btnClearUnitBooking" type="button" class="text-xs text-rose-600 hover:text-rose-700 font-semibold px-2.5 py-1.5 rounded-lg hover:bg-rose-50 transition">
+            清除此格預約
+          </button>
+          <div class="flex items-center gap-2">
+            <button id="btnCancelModal" type="button" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">
+              取消
+            </button>
+            <button type="submit" class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#1B4F72] hover:bg-sky-800 text-white shadow-xs transition">
+              儲存更新
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastBox" class="hidden fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-xl shadow-lg border border-slate-700">
+    <span id="toastMessage">已複製到剪貼簿</span>
+  </div>
+
+  <script>
+    // 1. Floor & Unit Configuration matching updated CT2_Booking_Grid.xlsx
+    const FLOORS = [
+      { display: "22/F", key: "22", zoneIdx: 0 },
+      { display: "21/F", key: "21", zoneIdx: 0 },
+      { display: "20/F", key: "20", zoneIdx: 0 },
+      { display: "19/F", key: "19", zoneIdx: 1 },
+      { display: "18/F", key: "18", zoneIdx: 1 },
+      { display: "17/F", key: "17", zoneIdx: 1 },
+      { display: "16/F", key: "16", zoneIdx: 2 },
+      { display: "15/F", key: "15", zoneIdx: 2 },
+      { display: "12/F", key: "12", zoneIdx: 2 },
+      { display: "11/F", key: "11", zoneIdx: 3 },
+      { display: "10/F", key: "10", zoneIdx: 3 },
+      { display: "09/F", key: "09", zoneIdx: 3 },
+      { display: "08/F", key: "08", zoneIdx: 4 },
+      { display: "07/F", key: "07", zoneIdx: 4 },
+      { display: "06/F", key: "06", zoneIdx: 4 },
+      { display: "05/F", key: "05", zoneIdx: 5 },
+      { display: "03/F", key: "03", zoneIdx: 5 },
+      { display: "02/F", key: "02", zoneIdx: 5 },
+      { display: "01/F", key: "01", zoneIdx: 6 },
+      { display: "G2",   key: "G2", zoneIdx: 6 },
+      { display: "G1",   key: "G1", zoneIdx: 6 }
+    ];
+
+    const UNITS = ["A", "B", "C", "D", "E", "F", "G", "H", "J"];
+
+    // Updated Staff Names from the user's edited CT2_Booking_Grid.xlsx
+    const STAFF_ZONES = [
+      { id: 0, name: "黃浩賢", phone: "9689 9734", floors: ["22/F", "21/F", "20/F"] },
+      { id: 1, name: "左軍",   phone: "9856 3534", floors: ["19/F", "18/F", "17/F"] },
+      { id: 2, name: "楊國威", phone: "9858 0174", floors: ["16/F", "15/F", "12/F"] },
+      { id: 3, name: "何海維", phone: "9858 4649", floors: ["11/F", "10/F", "09/F"] },
+      { id: 4, name: "陳學斌", phone: "9858 0741", floors: ["08/F", "07/F", "06/F"] },
+      { id: 5, name: "彭永華", phone: "9858 1324", floors: ["05/F", "03/F", "02/F"] },
+      { id: 6, name: "張霆威", phone: "9858 5447", floors: ["01/F", "G2", "G1"] }
+    ];
+
+    const SPECIAL_CELLS = {
+      "22-D": "US", "22-E": "NIL", "22-F": "NIL", "22-G": "NIL", "22-H": "NIL", "22-J": "NIL",
+      "01-A": "US", "01-B": "US", "01-J": "US",
+      "G2-A": "NIL", "G2-B": "NIL", "G2-J": "NIL",
+      "G1-A": "NIL", "G1-B": "NIL", "G1-J": "NIL"
+    };
+
+    const DEFAULT_BOOKINGS = {
+      // 10/13 - 10/17 已完成/早期預約
+      "05-G": { ddmm: "13/10", fullDate: "2026/10/13 (星期二)", sortKey: "2026-10-13T14:45", time: "14:45", status: "normal", vip: false, tag: "", plate: "", loc: "", note: "與CT1-3F同一業主" },
+      "12-D": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T15:30", time: "15:30", status: "normal", vip: true, tag: "VIP", plate: "", loc: "", note: "VIP" },
+      "10-A": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T16:15", time: "16:15", status: "normal", vip: true, tag: "VIP", plate: "", loc: "", note: "VIP" },
+      "01-C": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T15:30", time: "15:30", status: "normal", vip: false, tag: "", plate: "", loc: "", note: "CT5-8J 為同一業主；關連單位 CT2-10B, CT3-1D" },
+      "10-B": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T16:15", time: "16:15", status: "normal", vip: false, tag: "", plate: "", loc: "", note: "CT3-1D 為同一業主；關連單位 CT2-1C, CT5-8J" },
+      "21-A": { ddmm: "17/10", fullDate: "2026/10/17 (星期六)", sortKey: "2026-10-17T14:45", time: "14:45", status: "normal", vip: false, tag: "", plate: "", loc: "", note: "CT5-27H, CT2-21A,21J, CT3-9D 14:00一同收樓" },
+      "21-J": { ddmm: "17/10", fullDate: "2026/10/17 (星期六)", sortKey: "2026-10-17T15:30", time: "15:30", status: "normal", vip: false, tag: "", plate: "", loc: "", note: "CT5-27H, CT2-21A,21J, CT3-9D 14:00一同收樓" },
+
+      // 10/18 - 11/07 最新 SS 2A Booking List (2026/10/22 14:16 更新)
+      "21-F": { ddmm: "18/10", fullDate: "2026/10/18 (星期日)", sortKey: "2026-10-18T10:30", time: "10:30", status: "normal", vip: true, tag: "VIP", plate: "VX8055", loc: "", note: "車牌：VX8055｜VIP 原約19/10 12:00（與 CT1-8E 同業主）" },
+      "21-D": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", plate: "", loc: "", note: "CT2-21D, CT5-22B 一同14:00收樓 VIP" },
+      "11-G": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T11:15", time: "11:15", status: "updated", vip: true, tag: "VIP", plate: "YU807", loc: "", note: "車牌：YU807｜CT2-11G,19D 同業主 (11:30) VIP 原約當日15:30" },
+      "19-D": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T11:15", time: "11:15", status: "updated", vip: true, tag: "VIP", plate: "YU807", loc: "", note: "車牌：YU807｜CT2-11G,19D 同業主 (11:30) VIP 原約當日15:30" },
+      "20-A": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T15:30", time: "15:30", status: "normal", vip: false, tag: "", plate: "XS4993R / K3890", loc: "", note: "車牌：XS4993R / K3890" },
+      "18-B": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", plate: "MY1807", loc: "", note: "車牌：MY1807｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
+      "09-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", plate: "ZW8647 / UM766", loc: "", note: "車牌：ZW8647 / UM766｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
+      "12-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", plate: "WL9088 / VT309", loc: "", note: "車牌：WL9088 / VT309｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
+      "20-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:45", time: "14:45", status: "normal", vip: true, tag: "VIP", plate: "ZU7046", loc: "", note: "車牌：ZU7046｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
+      "07-B": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:00", time: "14:00", status: "normal", vip: false, tag: "", plate: "NA5970", loc: "", note: "車牌：NA5970｜CT2-7B, 12H為親屬 14:00收樓, 有線拍攝待確定" },
+      "21-E": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:00", time: "14:00", status: "normal", vip: false, tag: "", plate: "XR4999", loc: "", note: "車牌：XR4999" },
+      "12-H": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:45", time: "14:45", status: "normal", vip: false, tag: "", plate: "NA5970", loc: "", note: "車牌：NA5970｜CT2-7B, 12H為親屬 14:00收樓, 有線拍攝待確定" },
+      "12-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T10:30", time: "10:30", status: "new", vip: false, tag: "", plate: "XD8428", loc: "", note: "車牌：XD8428｜CT2-12C, CT2-8G 一同10:30 收樓" },
+      "08-G": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T11:15", time: "11:15", status: "new", vip: false, tag: "", plate: "XD8428", loc: "", note: "車牌：XD8428｜CT2-12C, CT2-8G 一同10:30 收樓" },
+      "15-D": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T14:00", time: "14:00", status: "normal", vip: false, tag: "", plate: "HU4759", loc: "", note: "車牌：HU4759｜原約29/10 14:45（改期至26/10 14:00）" },
+      "05-C": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T10:30", time: "10:30", status: "normal", vip: false, tag: "", plate: "KT1688", loc: "", note: "車牌：KT1688｜CT2-5C, 6C同業主 CT3-9F為親戚 10:30 收樓" },
+      "06-C": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T11:15", time: "11:15", status: "normal", vip: false, tag: "", plate: "", loc: "", note: "CT2-5C, 6C同業主 CT3-9F為親戚 10:30 收樓" },
+      "15-H": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T14:00", time: "14:00", status: "normal", vip: false, tag: "", plate: "DR1428", loc: "", note: "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓" },
+      "18-H": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T14:45", time: "14:45", status: "normal", vip: false, tag: "", plate: "DR1428", loc: "", note: "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓" },
+      "06-J": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T15:30", time: "15:30", status: "normal", vip: false, tag: "", plate: "", loc: "後補", note: "接待位置：後補｜原約25/10更新為28/10 15:30" },
+      "19-C": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T15:30", time: "15:30", status: "new", vip: false, tag: "", plate: "WF1591", loc: "", note: "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同15:30收樓" },
+      "17-A": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T16:15", time: "16:15", status: "normal", vip: false, tag: "", plate: "YW4592", loc: "", note: "車牌：YW4592｜原約23/10 16:15（改期至28/10 16:15）" },
+      "11-A": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T10:30", time: "10:30", status: "normal", vip: false, tag: "", plate: "KT1688", loc: "", note: "車牌：KT1688｜CT2-11A, CT3-8F為親戚 10:30 收樓" },
+      "10-G": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T11:15", time: "11:15", status: "normal", vip: false, tag: "", plate: "PN996 / ST722", loc: "", note: "車牌：PN996 / ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15" },
+      "21-H": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T14:00", time: "14:00", status: "new", vip: false, tag: "", plate: "", loc: "巴士候車室", note: "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓" },
+      "19-H": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T14:45", time: "14:45", status: "new", vip: false, tag: "", plate: "", loc: "巴士候車室", note: "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓" },
+      "08-J": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T15:30", time: "15:30", status: "new", vip: false, tag: "", plate: "DK698", loc: "", note: "車牌：DK698" },
+      "16-H": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T15:30", time: "15:30", status: "new", vip: false, tag: "", plate: "", loc: "巴士候車室", note: "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓" },
+      "05-B": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T12:00", time: "12:00", status: "normal", vip: false, tag: "", plate: "", loc: "人閘", note: "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓" },
+      "17-H": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T15:30", time: "15:30", status: "normal", vip: false, tag: "", plate: "PZ2007", loc: "", note: "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓" },
+      "06-H": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T09:45", time: "09:45", status: "normal", vip: false, tag: "", plate: "NA5970", loc: "", note: "車牌：NA5970｜原約24/10 14:00（改期至31/10 09:45）" },
+      "16-D": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T14:00", time: "14:00", status: "normal", vip: false, tag: "", plate: "", loc: "巴士候車室", note: "接待位置：巴士候車室" },
+      "18-D": { ddmm: "03/11", fullDate: "2026/11/03 (星期二)", sortKey: "2026-11-03T14:00", time: "14:00", status: "new", vip: false, tag: "", plate: "ND902", loc: "", note: "車牌：ND902｜CT2-18D, CT5-21C 一同14:00 收樓" },
+      "07-A": { ddmm: "04/11", fullDate: "2026/11/04 (星期三)", sortKey: "2026-11-04T16:15", time: "16:15", status: "normal", vip: false, tag: "", plate: "ZB3924", loc: "", note: "車牌：ZB3924｜CT1-8A, CT2-7A 為親屬 一齊收樓" },
+      "12-F": { ddmm: "07/11", fullDate: "2026/11/07 (星期六)", sortKey: "2026-11-07T11:15", time: "11:15", status: "new", vip: false, tag: "", plate: "", loc: "巴士候車室", note: "接待位置：巴士候車室" }
+    };
+
+    const STATUS_LABELS = {
+      normal: "一般預約（淺灰）",
+      updated: "更新預約（藍色）",
+      new: "新預約（黃色）",
+      cancelled: "已取消（粉紅）"
+    };
+
+    // Application State
+    let bookingsData = {};
+    let activeStatusFilter = "all";
+    let activeStaffId = "all";
+    let searchQuery = "";
+    let currentView = "grid"; // "grid" | "list" | "staff"
+    let gridDisplayMode = "full"; // "full" | "dateOnly"
+    let listSortBy = "date";
+
+    const STORAGE_KEY = "ct2_bookings_v2_1022";
+
+    function loadData() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          bookingsData = JSON.parse(saved);
+          return;
+        }
+      } catch (e) {
+        // Fallback to default
+      }
+      bookingsData = JSON.parse(JSON.stringify(DEFAULT_BOOKINGS));
+    }
+
+    function saveData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookingsData));
+      } catch (e) {
+        // Ignore storage errors in sandboxed frames
+      }
+    }
+
+    function getFloorObj(flKey) {
+      return FLOORS.find(f => f.key === flKey);
+    }
+
+    function getStaffForFloor(flKey) {
+      const fl = getFloorObj(flKey);
+      return fl ? STAFF_ZONES[fl.zoneIdx] : STAFF_ZONES[0];
+    }
+
+    function matchesFilter(flKey, unitKey, booking) {
+      const staff = getStaffForFloor(flKey);
+      if (activeStaffId !== "all" && String(staff.id) !== String(activeStaffId)) {
+        return false;
+      }
+      if (!booking) {
+        return false;
+      }
+      if (activeStatusFilter !== "all") {
+        if (activeStatusFilter === "vip") {
+          if (!booking.vip) return false;
+        } else if (booking.status !== activeStatusFilter) {
+          return false;
+        }
+      }
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const unitName = `ct2 ${flKey}${unitKey}`.toLowerCase();
+        const shortUnit = `${flKey}${unitKey}`.toLowerCase();
+        const hay = `${unitName} ${shortUnit} ${booking.ddmm} ${booking.fullDate} ${booking.time} ${booking.note} ${staff.name}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    }
+
+    function computeZoneCount(zoneIdx) {
+      let count = 0;
+      FLOORS.filter(f => f.zoneIdx === zoneIdx).forEach(f => {
+        UNITS.forEach(u => {
+          if (bookingsData[`${f.key}-${u}`]) {
+            count++;
+          }
+        });
+      });
+      return count;
+    }
+
+    function updateCounters() {
+      let total = 0, normal = 0, updated = 0, newCount = 0, cancelled = 0, vip = 0;
+      Object.values(bookingsData).forEach(b => {
+        if (!b) return;
+        total++;
+        if (b.status === "normal") normal++;
+        if (b.status === "updated") updated++;
+        if (b.status === "new") newCount++;
+        if (b.status === "cancelled") cancelled++;
+        if (b.vip) vip++;
+      });
+      document.getElementById("count-all").textContent = total;
+      document.getElementById("count-normal").textContent = normal;
+      document.getElementById("count-updated").textContent = updated;
+      document.getElementById("count-new").textContent = newCount;
+      document.getElementById("count-cancelled").textContent = cancelled;
+      document.getElementById("count-vip").textContent = vip;
+    }
+
+    function renderStaffFilterBar() {
+      const bar = document.getElementById("staffFilterBar");
+      let html = `<span class="text-xs font-semibold text-slate-500 mr-1">負責同事：</span>`;
+      const allActive = activeStaffId === "all";
+      html += `
+        <button type="button" data-staff="all" class="staff-pill px-3 py-1.5 rounded-lg text-xs font-bold border transition ${
+          allActive ? "bg-[#1B4F72] text-white border-[#1B4F72]" : "bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-100"
+        }">
+          全部同事 (7組)
+        </button>
+      `;
+
+      STAFF_ZONES.forEach(s => {
+        const cnt = computeZoneCount(s.id);
+        const isAct = String(activeStaffId) === String(s.id);
+        html += `
+          <button type="button" data-staff="${s.id}" class="staff-pill px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition ${
+            isAct ? "bg-[#1B4F72] text-white border-[#1B4F72] shadow-xs" : "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
+          }">
+            ${s.name} <span class="opacity-75">(${s.floors[0]}–${s.floors[2]} · ${cnt}宗)</span>
+          </button>
+        `;
+      });
+      bar.innerHTML = html;
+
+      bar.querySelectorAll(".staff-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeStaffId = btn.getAttribute("data-staff");
+          renderAll();
+        });
+      });
+
+      // Update selected staff banner
+      const banner = document.getElementById("selectedStaffBanner");
+      if (activeStaffId === "all") {
+        banner.classList.add("hidden");
+      } else {
+        const st = STAFF_ZONES.find(s => String(s.id) === String(activeStaffId));
+        if (st) {
+          const cnt = computeZoneCount(st.id);
+          banner.classList.remove("hidden");
+          document.getElementById("bannerStaffName").textContent = st.name;
+          const phoneLink = document.getElementById("bannerStaffPhone");
+          phoneLink.textContent = `📞 ${st.phone}`;
+          phoneLink.href = `tel:${st.phone.replace(/\s+/g, "")}`;
+          document.getElementById("bannerStaffFloors").textContent =
+            `負責樓層：${st.floors.join(", ")} ｜ 本區預約宗數：${cnt} 宗`;
+        }
+      }
+    }
+
+    function renderGrid() {
+      const tbody = document.getElementById("gridTableBody");
+      const rowsHtml = [];
+
+      FLOORS.forEach((flObj, idx) => {
+        const flKey = flObj.key;
+        const zoneIdx = flObj.zoneIdx;
+        const posInZone = idx % 3;
+        const isZoneEnd = posInZone === 2;
+        const isFloor22 = flKey === "22";
+
+        if (activeStaffId !== "all" && String(zoneIdx) !== String(activeStaffId)) {
+          return;
+        }
+
+        const staff = STAFF_ZONES[zoneIdx];
+        let staffCellContent = "";
+        let staffCellStyle = "text-xs text-slate-700 bg-slate-50";
+        if (posInZone === 0) {
+          staffCellContent = `<button type="button" data-select-staff="${staff.id}" class="font-bold text-slate-900 hover:text-sky-700 hover:underline">${staff.name}</button>`;
+        } else if (posInZone === 1) {
+          staffCellContent = `<a href="tel:${staff.phone.replace(/\s+/g, "")}" class="font-semibold text-slate-600 hover:text-sky-700">${staff.phone}</a>`;
+        } else {
+          const zCnt = computeZoneCount(zoneIdx);
+          staffCellContent = `<span class="font-bold text-slate-800">總單數 ${zCnt}</span>`;
+        }
+
+        const trClasses = ["h-11"];
+        if (isZoneEnd) trClasses.push("zone-divider");
+        if (isFloor22) trClasses.push("row-22-bg");
+
+        let cellsHtml = `
+          <td colspan="3" class="${staffCellStyle} staff-col-border px-2">${staffCellContent}</td>
+          <td class="font-bold text-xs sm:text-sm text-slate-900 bg-slate-50 staff-col-border">${flObj.display}</td>
+        `;
+
+        UNITS.forEach(u => {
+          const cellKey = `${flKey}-${u}`;
+          const booking = bookingsData[cellKey];
+          const special = SPECIAL_CELLS[cellKey];
+
+          if (booking) {
+            const isMatched = matchesFilter(flKey, u, booking);
+            const dimClass = isMatched ? "" : "opacity-20 grayscale";
+            const statusClass = `cell-${booking.status}`;
+            const vipLabel = booking.tag ? ` (${booking.tag})` : (booking.vip ? " (VIP)" : "");
+            const hasNoteDot = booking.note && booking.note.trim() !== ""
+              ? `<span class="inline-block w-1.5 h-1.5 rounded-full bg-sky-900/70 ml-0.5 align-middle" title="附有收樓備註"></span>`
+              : "";
+
+            let innerContent = "";
+            if (gridDisplayMode === "dateOnly") {
+              innerContent = `<div class="font-bold text-xs sm:text-sm leading-tight">${booking.ddmm}${hasNoteDot}</div>`;
+            } else {
+              innerContent = `
+                <div class="font-bold text-xs leading-tight">${booking.ddmm}${hasNoteDot}</div>
+                <div class="text-[11px] font-semibold leading-tight opacity-90">${booking.time}${vipLabel}</div>
+              `;
+            }
+
+            cellsHtml += `
+              <td data-cell="${cellKey}" class="${statusClass} ${dimClass} cursor-pointer transition px-1 py-1 select-none" title="點擊查看或修改 CT2 ${flKey}${u} 預約">
+                ${innerContent}
+              </td>
+            `;
+          } else if (special) {
+            cellsHtml += `
+              <td class="cell-special text-xs select-none">${special}</td>
+            `;
+          } else {
+            cellsHtml += `
+              <td data-cell="${cellKey}" class="hover:bg-sky-50/70 cursor-pointer transition text-transparent hover:text-slate-400 text-[11px]" title="點擊新增 CT2 ${flKey}${u} 預約">+</td>
+            `;
+          }
+        });
+
+        rowsHtml.push(`<tr class="${trClasses.join(" ")}">${cellsHtml}</tr>`);
+      });
+
+      tbody.innerHTML = rowsHtml.join("");
+
+      // Attach click listeners on unit cells
+      tbody.querySelectorAll("td[data-cell]").forEach(td => {
+        td.addEventListener("click", () => {
+          const key = td.getAttribute("data-cell");
+          const [flKey, uKey] = key.split("-");
+          openUnitModal(flKey, uKey);
+        });
+      });
+
+      // Attach click listeners on staff names inside grid
+      tbody.querySelectorAll("button[data-select-staff]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          activeStaffId = btn.getAttribute("data-select-staff");
+          renderAll();
+        });
+      });
+    }
+
+    function getFilteredBookingsArray() {
+      const arr = [];
+      FLOORS.forEach((flObj, flOrder) => {
+        UNITS.forEach(u => {
+          const key = `${flObj.key}-${u}`;
+          const b = bookingsData[key];
+          if (b && matchesFilter(flObj.key, u, b)) {
+            arr.push({
+              key,
+              flKey: flObj.key,
+              flDisplay: flObj.display,
+              flOrder,
+              unit: u,
+              staff: STAFF_ZONES[flObj.zoneIdx],
+              ...b
+            });
+          }
+        });
+      });
+
+      if (listSortBy === "date") {
+        arr.sort((a, b) => (a.sortKey || "").localeCompare(b.sortKey || "") || a.flOrder - b.flOrder);
+      } else if (listSortBy === "floor") {
+        arr.sort((a, b) => a.flOrder - b.flOrder || a.unit.localeCompare(b.unit));
+      } else if (listSortBy === "staff") {
+        arr.sort((a, b) => a.staff.id - b.staff.id || (a.sortKey || "").localeCompare(b.sortKey || ""));
+      }
+      return arr;
+    }
+
+    function renderList() {
+      const arr = getFilteredBookingsArray();
+      document.getElementById("filteredListCount").textContent = arr.length;
+      const tbody = document.getElementById("listTableBody");
+
+      if (arr.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-slate-400 text-sm">沒有符合篩選條件的預約紀錄</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = arr.map(item => {
+        const badgeClass =
+          item.status === "normal" ? "bg-[#CBD5E1] text-slate-900" :
+          item.status === "updated" ? "bg-[#93C5FD] text-[#0C2D57]" :
+          item.status === "new" ? "bg-[#FDE047] text-[#422006]" :
+          "bg-[#FECDD3] text-[#7F1D1D]";
+
+        const vipPill = item.vip
+          ? `<span class="ml-1 inline-block bg-amber-100 text-amber-900 border border-amber-300 text-[10px] font-bold px-1.5 py-0.5 rounded">VIP</span>`
+          : "";
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-2.5 px-3 font-medium text-slate-900 whitespace-nowrap">${item.fullDate || item.ddmm}</td>
+            <td class="py-2.5 px-3 font-semibold text-slate-800 whitespace-nowrap">${item.time}</td>
+            <td class="py-2.5 px-3 font-bold text-sky-900 whitespace-nowrap">CT2 ${ parseInt(item.flKey, 10) || item.flKey }${item.unit}${vipPill}</td>
+            <td class="py-2.5 px-3 whitespace-nowrap">
+              <span class="font-semibold text-slate-800">${item.staff.name}</span>
+              <span class="text-xs text-slate-500 ml-1">(${item.staff.phone})</span>
+            </td>
+            <td class="py-2.5 px-3 text-slate-700">${item.note || '<span class="text-slate-400">—</span>'}</td>
+            <td class="py-2.5 px-3 whitespace-nowrap">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-bold ${badgeClass}">
+                ${STATUS_LABELS[item.status] || item.status}
+              </span>
+            </td>
+            <td class="py-2.5 px-3 text-right whitespace-nowrap no-print">
+              <button type="button" data-edit-cell="${item.key}" class="text-xs font-semibold text-sky-700 hover:text-sky-900 hover:underline">
+                查看/修改
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      tbody.querySelectorAll("button[data-edit-cell]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const [flKey, uKey] = btn.getAttribute("data-edit-cell").split("-");
+          openUnitModal(flKey, uKey);
+        });
+      });
+    }
+
+    function renderStaffCards() {
+      const container = document.getElementById("viewStaffCardsSection");
+      const zonesToRender = activeStaffId === "all"
+        ? STAFF_ZONES
+        : STAFF_ZONES.filter(s => String(s.id) === String(activeStaffId));
+
+      container.innerHTML = zonesToRender.map(st => {
+        const zoneBookings = [];
+        FLOORS.filter(f => f.zoneIdx === st.id).forEach(f => {
+          UNITS.forEach(u => {
+            const b = bookingsData[`${f.key}-${u}`];
+            if (b) {
+              zoneBookings.push({ flKey: f.key, flDisplay: f.display, unit: u, ...b });
+            }
+          });
+        });
+        zoneBookings.sort((a, b) => (a.sortKey || "").localeCompare(b.sortKey || ""));
+
+        const rowsHtml = zoneBookings.map(item => {
+          const dotColor =
+            item.status === "normal" ? "bg-slate-400" :
+            item.status === "updated" ? "bg-blue-500" :
+            item.status === "new" ? "bg-yellow-400" : "bg-rose-400";
+          const vipTag = item.vip ? `<span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold ml-1">VIP</span>` : "";
+
+          return `
+            <div data-card-unit="${item.flKey}-${item.unit}" class="p-2.5 rounded-lg border border-slate-200 hover:border-sky-400 cursor-pointer transition bg-slate-50/60">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full ${dotColor}"></span>
+                  <span class="font-bold text-sm text-slate-900">CT2 ${parseInt(item.flKey, 10) || item.flKey}${item.unit}</span>
+                  ${vipTag}
+                </div>
+                <span class="text-xs font-bold text-sky-900 bg-sky-100/80 px-2 py-0.5 rounded">${item.ddmm} · ${item.time}</span>
+              </div>
+              ${item.note ? `<p class="text-xs text-slate-600 mt-1.5 leading-snug">${item.note}</p>` : ""}
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+            <div class="bg-[#1B4F72] text-white px-4 py-3 flex items-center justify-between">
+              <div>
+                <h4 class="font-bold text-base">${st.name}</h4>
+                <p class="text-xs text-sky-200">負責樓層：${st.floors.join(", ")}</p>
+              </div>
+              <div class="text-right">
+                <a href="tel:${st.phone.replace(/\s+/g, "")}" class="inline-block bg-white/15 hover:bg-white/25 text-xs px-2.5 py-1 rounded-full font-semibold">📞 ${st.phone}</a>
+                <div class="text-xs font-bold text-amber-300 mt-1">總單數：${zoneBookings.length} 宗</div>
+              </div>
+            </div>
+            <div class="p-3.5 space-y-2 flex-1">
+              ${rowsHtml || '<p class="text-xs text-slate-400 text-center py-4">暫無預約紀錄</p>'}
+            </div>
+            <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-200 flex justify-between items-center no-print">
+              <button type="button" data-filter-staff="${st.id}" class="text-xs font-semibold text-sky-700 hover:underline">
+                在格仔表中單獨檢視此區 →
+              </button>
+              <button type="button" data-copy-staff="${st.id}" class="text-xs font-semibold text-emerald-700 hover:underline">
+                📋 複製此同事清單
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      container.querySelectorAll("div[data-card-unit]").forEach(div => {
+        div.addEventListener("click", () => {
+          const [flKey, uKey] = div.getAttribute("data-card-unit").split("-");
+          openUnitModal(flKey, uKey);
+        });
+      });
+
+      container.querySelectorAll("button[data-filter-staff]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeStaffId = btn.getAttribute("data-filter-staff");
+          switchView("grid");
+          renderAll();
+        });
+      });
+
+      container.querySelectorAll("button[data-copy-staff]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const stId = Number(btn.getAttribute("data-copy-staff"));
+          copyStaffSummary(stId);
+        });
+      });
+    }
+
+    function openUnitModal(flKey, unitKey) {
+      const cellKey = `${flKey}-${unitKey}`;
+      const b = bookingsData[cellKey];
+      const staff = getStaffForFloor(flKey);
+
+      document.getElementById("modalFloorKey").value = flKey;
+      document.getElementById("modalUnitKey").value = unitKey;
+      document.getElementById("modalZoneBadge").textContent = `負責同事：${staff.name} (${staff.phone})`;
+      document.getElementById("modalUnitTitle").textContent = `CT2 ${flKey}/F ${unitKey} 室`;
+
+      if (b) {
+        document.getElementById("inputDateShort").value = b.ddmm || "";
+        document.getElementById("inputTime").value = b.time || "";
+        document.getElementById("inputFullDate").value = b.fullDate || `2026/${(b.ddmm || "").split("/").reverse().join("/")}`;
+        document.getElementById("inputStatus").value = b.status || "normal";
+        document.getElementById("inputVip").checked = Boolean(b.vip);
+        document.getElementById("inputNote").value = b.note || "";
+      } else {
+        document.getElementById("inputDateShort").value = "";
+        document.getElementById("inputTime").value = "";
+        document.getElementById("inputFullDate").value = "";
+        document.getElementById("inputStatus").value = "new";
+        document.getElementById("inputVip").checked = false;
+        document.getElementById("inputNote").value = "";
+      }
+
+      document.getElementById("unitModal").classList.remove("hidden");
+    }
+
+    function closeUnitModal() {
+      document.getElementById("unitModal").classList.add("hidden");
+    }
+
+    function showToast(msg) {
+      const box = document.getElementById("toastBox");
+      document.getElementById("toastMessage").textContent = msg;
+      box.classList.remove("hidden");
+      setTimeout(() => {
+        box.classList.add("hidden");
+      }, 2600);
+    }
+
+    function copyTextToClipboard(text, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMsg);
+        }).catch(() => {
+          fallbackCopy(text, successMsg);
+        });
+      } else {
+        fallbackCopy(text, successMsg);
+      }
+    }
+
+    function fallbackCopy(text, successMsg) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast(successMsg);
+      } catch (e) {
+        showToast("複製失敗，請手動複製");
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyStaffSummary(staffId) {
+      const st = STAFF_ZONES.find(s => s.id === staffId);
+      if (!st) return;
+      const lines = [`【Sierra Sea 2A - CT2 預約清單】`, `負責同事：${st.name} (${st.phone})`, `負責樓層：${st.floors.join(", ")}`, `---`];
+      FLOORS.filter(f => f.zoneIdx === st.id).forEach(f => {
+        UNITS.forEach(u => {
+          const b = bookingsData[`${f.key}-${u}`];
+          if (b) {
+            const vipStr = b.vip ? " [VIP]" : "";
+            const noteStr = b.note ? `｜備註：${b.note}` : "";
+            lines.push(`• CT2 ${parseInt(f.key, 10) || f.key}${u}：${b.ddmm} ${b.time}${vipStr} (${STATUS_LABELS[b.status]})${noteStr}`);
+          }
+        });
+      });
+      copyTextToClipboard(lines.join("\n"), `已複製 ${st.name} 的預約清單！`);
+    }
+
+    function switchView(viewName) {
+      currentView = viewName;
+      const gridSec = document.getElementById("viewGridSection");
+      const listSec = document.getElementById("viewListSection");
+      const staffSec = document.getElementById("viewStaffCardsSection");
+      const gridControls = document.getElementById("gridModeControls");
+
+      const tabGrid = document.getElementById("tabGrid");
+      const tabList = document.getElementById("tabList");
+      const tabStaff = document.getElementById("tabStaffCards");
+
+      [tabGrid, tabList, tabStaff].forEach(t => {
+        t.className = "view-tab text-slate-600 hover:text-slate-900 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition";
+      });
+
+      gridSec.classList.add("hidden");
+      listSec.classList.add("hidden");
+      staffSec.classList.add("hidden");
+      gridControls.classList.add("hidden");
+
+      if (viewName === "grid") {
+        gridSec.classList.remove("hidden");
+        gridControls.classList.remove("hidden");
+        tabGrid.className = "view-tab bg-white text-slate-900 shadow-sm px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition";
+      } else if (viewName === "list") {
+        listSec.classList.remove("hidden");
+        tabList.className = "view-tab bg-white text-slate-900 shadow-sm px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition";
+      } else {
+        staffSec.classList.remove("hidden");
+        tabStaff.className = "view-tab bg-white text-slate-900 shadow-sm px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition";
+      }
+    }
+
+    function renderAll() {
+      updateCounters();
+      renderStaffFilterBar();
+      renderGrid();
+      renderList();
+      renderStaffCards();
+    }
+
+    // Wire all controls on DOMContentLoaded
+    window.addEventListener("DOMContentLoaded", () => {
+      loadData();
+      renderAll();
+
+      // Status pills
+      document.querySelectorAll("#statusFilterBar .status-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeStatusFilter = btn.getAttribute("data-status");
+          document.querySelectorAll("#statusFilterBar .status-pill").forEach(b => {
+            b.classList.remove("ring-2", "ring-offset-1", "ring-slate-900");
+          });
+          btn.classList.add("ring-2", "ring-offset-1", "ring-slate-900");
+          renderAll();
+        });
+      });
+
+      // Search input
+      const searchInput = document.getElementById("searchInput");
+      const btnClearSearch = document.getElementById("btnClearSearch");
+      searchInput.addEventListener("input", () => {
+        searchQuery = searchInput.value;
+        btnClearSearch.classList.toggle("hidden", !searchQuery);
+        renderAll();
+      });
+      btnClearSearch.addEventListener("click", () => {
+        searchInput.value = "";
+        searchQuery = "";
+        btnClearSearch.classList.add("hidden");
+        renderAll();
+      });
+
+      // Banner return button
+      document.getElementById("btnShowAllStaff").addEventListener("click", () => {
+        activeStaffId = "all";
+        renderAll();
+      });
+
+      // View Tabs
+      document.getElementById("tabGrid").addEventListener("click", () => switchView("grid"));
+      document.getElementById("tabList").addEventListener("click", () => switchView("list"));
+      document.getElementById("tabStaffCards").addEventListener("click", () => switchView("staff"));
+
+      // Grid Mode Toggle
+      const btnModeFull = document.getElementById("btnModeFull");
+      const btnModeDateOnly = document.getElementById("btnModeDateOnly");
+      btnModeFull.addEventListener("click", () => {
+        gridDisplayMode = "full";
+        btnModeFull.className = "px-2.5 py-1 rounded-md font-semibold bg-sky-700 text-white transition";
+        btnModeDateOnly.className = "px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 transition";
+        renderGrid();
+      });
+      btnModeDateOnly.addEventListener("click", () => {
+        gridDisplayMode = "dateOnly";
+        btnModeDateOnly.className = "px-2.5 py-1 rounded-md font-semibold bg-sky-700 text-white transition";
+        btnModeFull.className = "px-2.5 py-1 rounded-md font-medium text-slate-600 hover:text-slate-900 transition";
+        renderGrid();
+      });
+
+      // Sort Select
+      document.getElementById("sortSelect").addEventListener("change", (e) => {
+        listSortBy = e.target.value;
+        renderList();
+      });
+
+      // Modal actions
+      document.getElementById("btnCloseModal").addEventListener("click", closeUnitModal);
+      document.getElementById("btnCancelModal").addEventListener("click", closeUnitModal);
+      document.getElementById("unitModal").addEventListener("click", (e) => {
+        if (e.target.id === "unitModal") closeUnitModal();
+      });
+
+      document.getElementById("btnClearUnitBooking").addEventListener("click", () => {
+        const flKey = document.getElementById("modalFloorKey").value;
+        const uKey = document.getElementById("modalUnitKey").value;
+        delete bookingsData[`${flKey}-${uKey}`];
+        saveData();
+        closeUnitModal();
+        renderAll();
+        showToast(`已清除 CT2 ${flKey}${uKey} 的預約資料`);
+      });
+
+      document.getElementById("unitEditForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const flKey = document.getElementById("modalFloorKey").value;
+        const uKey = document.getElementById("modalUnitKey").value;
+        const statusVal = document.getElementById("inputStatus").value;
+        const ddmm = document.getElementById("inputDateShort").value.trim();
+        const time = document.getElementById("inputTime").value.trim();
+        const fullDate = document.getElementById("inputFullDate").value.trim() || ddmm;
+        const vip = document.getElementById("inputVip").checked;
+        const note = document.getElementById("inputNote").value.trim();
+
+        if (statusVal === "empty" || !ddmm) {
+          delete bookingsData[`${flKey}-${uKey}`];
+        } else {
+          const parts = ddmm.split("/");
+          const sortKey = parts.length === 2 ? `2026-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}T${time || "00:00"}` : ddmm;
+          const tag = statusVal === "cancelled" && vip ? "VIP 取消" : (vip ? "VIP" : "");
+          bookingsData[`${flKey}-${uKey}`] = {
+            ddmm,
+            time,
+            fullDate,
+            sortKey,
+            status: statusVal,
+            vip,
+            tag,
+            note
+          };
+        }
+        saveData();
+        closeUnitModal();
+        renderAll();
+        showToast(`已儲存 CT2 ${flKey}${uKey} 的預約更新`);
+      });
+
+      // Top Action Buttons
+      document.getElementById("btnPrint").addEventListener("click", () => {
+        window.print();
+      });
+
+      document.getElementById("btnCopyShare").addEventListener("click", () => {
+        const arr = getFilteredBookingsArray();
+        const titleStaff = activeStaffId === "all"
+          ? "全部同事"
+          : STAFF_ZONES.find(s => String(s.id) === String(activeStaffId))?.name || "";
+        const lines = [
+          `【Sierra Sea 2A — CT2 單位預約清單 (${titleStaff})】`,
+          `共 ${arr.length} 宗預約：`,
+          `---`
+        ];
+        arr.forEach(item => {
+          const vipStr = item.vip ? " [VIP]" : "";
+          const noteStr = item.note ? `｜${item.note}` : "";
+          lines.push(`• CT2 ${parseInt(item.flKey, 10) || item.flKey}${item.unit} (${item.staff.name})：${item.ddmm} ${item.time}${vipStr}${noteStr}`);
+        });
+        copyTextToClipboard(lines.join("\n"), `已複製目前篩選的 ${arr.length} 宗預約清單！`);
+      });
+
+      document.getElementById("btnResetData").addEventListener("click", () => {
+        bookingsData = JSON.parse(JSON.stringify(DEFAULT_BOOKINGS));
+        saveData();
+        activeStatusFilter = "all";
+        activeStaffId = "all";
+        searchQuery = "";
+        document.getElementById("searchInput").value = "";
+        document.getElementById("btnClearSearch").classList.add("hidden");
+        renderAll();
+        showToast("已還原為最新預設的 42 宗預約資料 (2026/10/22 14:16 版本)");
+      });
+    });
+  </script>
+</body>
+</html>
