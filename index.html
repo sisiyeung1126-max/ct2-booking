@@ -98,7 +98,7 @@
           <h1 id="headerMainTitle" class="text-lg sm:text-xl font-bold tracking-tight">Sierra Sea 2A 單位預約格仔表及負責同事查看平台</h1>
         </div>
         <p class="text-xs sm:text-sm text-sky-100/90 mt-1">
-          涵蓋日期：2026/10/02 至 2026/11/10 ｜ 資料更新時間：<span id="lastUpdatedLabel">2026/10/23 14:31 (已同步 10/23 14:30 全屋苑 4 座最新 Booking List)</span>
+          涵蓋日期：2026/10/02 至 2026/11/10 ｜ 資料更新時間：<span id="lastUpdatedLabel">2026/10/23 16:54 (已同步 10/23 16:55 全屋苑最新 Booking List 及早期收樓紀錄)</span>
         </p>
       </div>
 
@@ -129,20 +129,20 @@
         <div class="flex flex-wrap items-center gap-2" id="towerSelectorBar">
           <span class="text-xs font-bold text-slate-600 mr-1">選擇座數 (Tower)：</span>
           <button type="button" data-tower="CT1" class="tower-tab px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition">
-            Coral Tower 1 (T20) <span id="tower-count-CT1" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">37宗</span>
+            Coral Tower 1 (T20) <span id="tower-count-CT1" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">39宗</span>
           </button>
           <button type="button" data-tower="CT2" class="tower-tab px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition">
-            Coral Tower 2 (T19) <span id="tower-count-CT2" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">54宗</span>
+            Coral Tower 2 (T19) <span id="tower-count-CT2" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">59宗</span>
           </button>
           <button type="button" data-tower="CT3" class="tower-tab px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition">
-            Coral Tower 3 (T18) <span id="tower-count-CT3" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">65宗</span>
+            Coral Tower 3 (T18) <span id="tower-count-CT3" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">73宗</span>
           </button>
           <button type="button" data-tower="CT5" class="tower-tab px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition">
-            Coral Tower 5 (T17) <span id="tower-count-CT5" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">56宗</span>
+            Coral Tower 5 (T17) <span id="tower-count-CT5" class="ml-1 px-1.5 py-0.5 rounded-full text-[11px]">61宗</span>
           </button>
         </div>
         <div class="text-xs text-slate-500 font-medium">
-          全屋苑 4 座合共：<strong id="allTowersTotalCount" class="text-slate-900">212</strong> 宗預約
+          全屋苑 4 座合共：<strong id="allTowersTotalCount" class="text-slate-900">232</strong> 宗預約
         </div>
       </div>
     </section>
@@ -588,228 +588,2333 @@
     };
 
     const DEFAULT_ALL_BOOKINGS = {
-      CT1: {
-        "12-G": { ddmm: "10/10", fullDate: "2026/10/10 (星期六)", sortKey: "2026-10-10T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T20 格仔表紀錄)" },
-        "03-H": { ddmm: "12/10", fullDate: "2026/10/12 (星期一)", sortKey: "2026-10-12T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T20 格仔表紀錄)" },
-        "15-G": { ddmm: "13/10", fullDate: "2026/10/13 (星期二)", sortKey: "2026-10-13T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T20 格仔表紀錄)" },
-        "03-F": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T10:00", time: "留匙", status: "normal", vip: false, tag: "", note: "與 CT2-5G 同一業主 (T20 格仔表紀錄)" },
-        "05-H": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T11:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T20 格仔表紀錄)" },
-        "15-B": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T20 格仔表紀錄)" },
-        "08-E": { ddmm: "18/10", fullDate: "2026/10/18 (星期日)", sortKey: "2026-10-18T10:30", time: "10:30", status: "normal", vip: true, tag: "VIP", note: "車牌：VX8055｜VIP 原約 19/10 11:15（與 CT2-21F 同業主）" },
-        "11-E": { ddmm: "19/10", fullDate: "2026/10/19 (星期一)", sortKey: "2026-10-19T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室（格仔表正單日期：22/10）" },
-        "08-F": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T10:00", time: "留匙", status: "normal", vip: false, tag: "", note: "正單日期 20/10 (T20 格仔表紀錄)" },
-        "03-G": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T10:00", time: "已完成", status: "normal", vip: false, tag: "", note: "已完成正單 21/10 (T20 格仔表紀錄)" },
-        "15-D": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "接待位置：人閘" },
-        "G1-E": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：ND186" },
-        "11-H": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：MX149" },
-        "10-D": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同15:30收樓" },
-        "11-C": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "01-F": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T15:30", time: "15:30", status: "updated", vip: false, tag: "", note: "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓（現住BT3）" },
-        "08-J": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T16:15", time: "16:15", status: "new", vip: false, tag: "", note: "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓" },
-        "07-H": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)" },
-        "12-B": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)" },
-        "07-G": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)" },
-        "12-H": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)" },
-        "05-D": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "15-C": { ddmm: "27/10", fullDate: "2026/10/27 (星期二)", sortKey: "2026-10-27T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "12-D": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "車牌：LE3291｜Youtuber 諗sir拍攝" },
-        "10-H": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：GX9890" },
-        "16-B": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓" },
-        "01-G": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：PN996/ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15" },
-        "10-A": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：PN996/ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15" },
-        "11-A": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：PN996/ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15" },
-        "11-D": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：VV403" },
-        "16-E": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓" },
-        "16-F": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓" },
-        "05-A": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T15:30", time: "15:30", status: "new", vip: false, tag: "", note: "車牌：XD8428｜CT1-5A, CT2-6G 一同 15:30 收樓" },
-        "06-E": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：M303B｜CT1-6E, CT5-21B 一同 10:30 收樓" },
-        "11-F": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：ZB2188" },
-        "08-A": { ddmm: "04/11", fullDate: "2026/11/04 (星期三)", sortKey: "2026-11-04T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：ZB3924｜CT1-8A, CT2-7A 為親屬 一齊收樓" },
-        "09-D": { ddmm: "06/11", fullDate: "2026/11/06 (星期五)", sortKey: "2026-11-06T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：ZZ6278｜CT5-19B, CT1-9D 為親屬一齊收樓" }
+      "CT1": {
+            "12-G": {
+                  "ddmm": "10/10",
+                  "fullDate": "2026/10/10 (星期六)",
+                  "sortKey": "2026-10-10T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌: PRESENT｜VIP｜BY INTAKE APP（已收樓）"
+            },
+            "03-H": {
+                  "ddmm": "12/10",
+                  "fullDate": "2026/10/12 (星期一)",
+                  "sortKey": "2026-10-12T10:00",
+                  "time": "已收樓",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "早期已完成收樓 (T20 格仔表紀錄)"
+            },
+            "15-G": {
+                  "ddmm": "13/10",
+                  "fullDate": "2026/10/13 (星期二)",
+                  "sortKey": "2026-10-13T14:30",
+                  "time": "14:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌: XP5006｜VIP（已收樓）"
+            },
+            "03-F": {
+                  "ddmm": "14/10",
+                  "fullDate": "2026/10/14 (星期三)",
+                  "sortKey": "2026-10-14T14:00",
+                  "time": "留匙",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "留匙",
+                  "note": "接待位置: 巴士候車室｜與CT2-5G同一業主（原約 13/10 14:00，14/10 留匙）"
+            },
+            "05-H": {
+                  "ddmm": "14/10",
+                  "fullDate": "2026/10/14 (星期三)",
+                  "sortKey": "2026-10-14T11:00",
+                  "time": "已收樓",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "早期已完成收樓 (T20 格仔表紀錄)"
+            },
+            "15-B": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌: NA5970｜與CT2-12H同一業主，有線拍攝待確定（原約 17/10 14:00，16/10 已收樓）"
+            },
+            "08-E": {
+                  "ddmm": "18/10",
+                  "fullDate": "2026/10/18 (星期日)",
+                  "sortKey": "2026-10-18T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：VX8055｜VIP 原約 19/10 11:15（與 CT2-21F 同業主）"
+            },
+            "11-E": {
+                  "ddmm": "19/10",
+                  "fullDate": "2026/10/19 (星期一)",
+                  "sortKey": "2026-10-19T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室（格仔表正單日期：22/10）"
+            },
+            "08-F": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T10:00",
+                  "time": "留匙",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 20/10 (T20 格仔表紀錄)"
+            },
+            "03-G": {
+                  "ddmm": "21/10",
+                  "fullDate": "2026/10/21 (星期三)",
+                  "sortKey": "2026-10-21T10:00",
+                  "time": "已完成",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "已完成正單 21/10 (T20 格仔表紀錄)"
+            },
+            "15-D": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：人閘"
+            },
+            "G1-E": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ND186"
+            },
+            "11-H": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：MX149"
+            },
+            "10-D": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同15:30收樓"
+            },
+            "11-C": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "01-F": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T15:30",
+                  "time": "15:30",
+                  "status": "updated",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓（現住BT3）"
+            },
+            "08-J": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T16:15",
+                  "time": "16:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓"
+            },
+            "07-H": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)"
+            },
+            "12-B": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)"
+            },
+            "07-G": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)"
+            },
+            "12-H": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TJ7096｜CT1-7H, 7G, 12B, 12H 一同收樓 (12:00 TVB 今日有樓睇拍攝)"
+            },
+            "05-D": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "15-C": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "12-D": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：LE3291｜Youtuber 諗sir拍攝"
+            },
+            "10-H": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：GX9890"
+            },
+            "16-B": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓"
+            },
+            "01-G": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PN996/ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15"
+            },
+            "10-A": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PN996/ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15"
+            },
+            "11-A": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PN996/ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15"
+            },
+            "11-D": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：VV403"
+            },
+            "16-E": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓"
+            },
+            "16-F": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓"
+            },
+            "05-A": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XD8428｜CT1-5A, CT2-6G 一同 15:30 收樓"
+            },
+            "06-E": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：M303B｜CT1-6E, CT5-21B 一同 10:30 收樓"
+            },
+            "11-F": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZB2188"
+            },
+            "08-A": {
+                  "ddmm": "04/11",
+                  "fullDate": "2026/11/04 (星期三)",
+                  "sortKey": "2026-11-04T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZB3924｜CT1-8A, CT2-7A 為親屬 一齊收樓"
+            },
+            "09-D": {
+                  "ddmm": "06/11",
+                  "fullDate": "2026/11/06 (星期五)",
+                  "sortKey": "2026-11-06T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZZ6278｜CT5-19B, CT1-9D 為親屬一齊收樓"
+            },
+            "10-C": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T14:45",
+                  "time": "14:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "12-E": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            }
       },
-
-      CT2: {
-        "05-G": { ddmm: "13/10", fullDate: "2026/10/13 (星期二)", sortKey: "2026-10-13T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "與CT1-3F同一業主" },
-        "12-D": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T15:30", time: "15:30", status: "normal", vip: true, tag: "VIP", note: "VIP" },
-        "10-A": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T16:15", time: "16:15", status: "normal", vip: true, tag: "VIP", note: "VIP" },
-        "01-C": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "CT5-8J 為同一業主；關連單位 CT2-10B, CT3-1D" },
-        "10-B": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "CT3-1D 為同一業主；關連單位 CT2-1C, CT5-8J" },
-        "21-A": { ddmm: "17/10", fullDate: "2026/10/17 (星期六)", sortKey: "2026-10-17T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "CT5-27H, CT2-21A,21J, CT3-9D 14:00一同收樓" },
-        "21-J": { ddmm: "17/10", fullDate: "2026/10/17 (星期六)", sortKey: "2026-10-17T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "CT5-27H, CT2-21A,21J, CT3-9D 14:00一同收樓" },
-        "21-F": { ddmm: "18/10", fullDate: "2026/10/18 (星期日)", sortKey: "2026-10-18T10:30", time: "10:30", status: "normal", vip: true, tag: "VIP", note: "車牌：VX8055｜VIP 原約19/10 12:00（與 CT1-8E 同業主）" },
-        "21-D": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "CT2-21D, CT5-22B 一同14:00收樓 VIP" },
-        "11-G": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T11:15", time: "11:15", status: "normal", vip: true, tag: "VIP", note: "車牌：YU807｜CT2-11G,19D 同業主 (11:30) VIP 原約當日15:30" },
-        "19-D": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T11:15", time: "11:15", status: "normal", vip: true, tag: "VIP", note: "車牌：YU807｜CT2-11G,19D 同業主 (11:30) VIP 原約當日15:30" },
-        "20-A": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：XS4993R / K3890" },
-        "18-B": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "車牌：MY1807｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
-        "09-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "車牌：ZW8647 / UM766｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
-        "12-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "車牌：WL9088 / VT309｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
-        "20-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:45", time: "14:45", status: "normal", vip: true, tag: "VIP", note: "車牌：ZU7046｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
-        "07-B": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：NA5970｜CT2-7B, 12H為親屬 14:00收樓, 有線拍攝待確定" },
-        "21-E": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：XR4999" },
-        "12-H": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:45", time: "14:45", status: "updated", vip: false, tag: "", note: "車牌：UD9682（更新車牌）｜CT2-7B, 12H為親屬 14:00收樓, 有線拍攝待確定" },
-        "20-H": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T14:45", time: "14:45", status: "new", vip: false, tag: "", note: "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓" },
-        "01-F": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T15:30", time: "15:30", status: "new", vip: false, tag: "", note: "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓" },
-        "12-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：XD8428｜CT2-12C, CT2-8G 一同10:30 收樓" },
-        "08-G": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：XD8428｜CT2-12C, CT2-8G 一同10:30 收樓" },
-        "17-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:00", time: "14:00", status: "new", vip: false, tag: "", note: "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓" },
-        "17-B": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T15:30", time: "15:30", status: "new", vip: false, tag: "", note: "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓" },
-        "15-D": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：HU4759｜原約29/10 14:45（改期至26/10 14:00）" },
-        "20-D": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "05-C": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：KT1688｜CT2-5C, 6C同業主 CT3-9F為親戚 10:30 收樓" },
-        "06-C": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "CT2-5C, 6C同業主 CT3-9F為親戚 10:30 收樓" },
-        "15-H": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓" },
-        "18-H": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓" },
-        "06-J": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "接待位置：後補｜原約25/10更新為28/10 15:30" },
-        "19-C": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同15:30收樓" },
-        "17-A": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：YW4592｜原約23/10 16:15（改期至28/10 16:15）" },
-        "11-A": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：KT1688｜CT2-11A, CT3-8F為親戚 10:30 收樓" },
-        "10-G": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：PN996 / ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15" },
-        "21-H": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓" },
-        "19-H": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓" },
-        "08-J": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：DK698" },
-        "16-H": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓" },
-        "05-B": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓" },
-        "20-E": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：WD2208" },
-        "17-H": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓" },
-        "06-G": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T16:15", time: "16:15", status: "new", vip: false, tag: "", note: "車牌：XD8428｜CT1-5A, CT2-6G 一同 15:30 收樓" },
-        "06-H": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "車牌：NA5970｜原約24/10 14:00（改期至31/10 09:45）" },
-        "16-D": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "06-B": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T14:00", time: "14:00", status: "new", vip: false, tag: "", note: "接待位置：後補" },
-        "10-E": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T14:00", time: "14:00", status: "new", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "17-E": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "15-B": { ddmm: "03/11", fullDate: "2026/11/03 (星期二)", sortKey: "2026-11-03T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "18-D": { ddmm: "03/11", fullDate: "2026/11/03 (星期二)", sortKey: "2026-11-03T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：ND902｜CT2-18D, CT5-21C 一同14:00 收樓" },
-        "07-A": { ddmm: "04/11", fullDate: "2026/11/04 (星期三)", sortKey: "2026-11-04T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：ZB3924｜CT1-8A, CT2-7A 為親屬 一齊收樓" },
-        "12-F": { ddmm: "07/11", fullDate: "2026/11/07 (星期六)", sortKey: "2026-11-07T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "06-A": { ddmm: "09/11", fullDate: "2026/11/09 (星期一)", sortKey: "2026-11-09T14:00", time: "14:00", status: "new", vip: false, tag: "", note: "接待位置：巴士候車室" }
+      "CT2": {
+            "05-G": {
+                  "ddmm": "13/10",
+                  "fullDate": "2026/10/13 (星期二)",
+                  "sortKey": "2026-10-13T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置: 巴士候車室｜與CT1-3F同一業主（已收樓）"
+            },
+            "12-D": {
+                  "ddmm": "14/10",
+                  "fullDate": "2026/10/14 (星期三)",
+                  "sortKey": "2026-10-14T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "VIP｜原約當日14:00（已收樓）"
+            },
+            "10-A": {
+                  "ddmm": "14/10",
+                  "fullDate": "2026/10/14 (星期三)",
+                  "sortKey": "2026-10-14T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "接待位置: 巴士候車室｜VIP（已收樓）"
+            },
+            "01-C": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT5-8J 為同一業主；關連單位 CT2-10B, CT3-1D"
+            },
+            "10-B": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT3-1D 為同一業主；關連單位 CT2-1C, CT5-8J"
+            },
+            "21-A": {
+                  "ddmm": "17/10",
+                  "fullDate": "2026/10/17 (星期六)",
+                  "sortKey": "2026-10-17T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT5-27H, CT2-21A,21J, CT3-9D 14:00一同收樓"
+            },
+            "21-J": {
+                  "ddmm": "17/10",
+                  "fullDate": "2026/10/17 (星期六)",
+                  "sortKey": "2026-10-17T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT5-27H, CT2-21A,21J, CT3-9D 14:00一同收樓"
+            },
+            "21-F": {
+                  "ddmm": "18/10",
+                  "fullDate": "2026/10/18 (星期日)",
+                  "sortKey": "2026-10-18T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：VX8055｜VIP 原約19/10 12:00（與 CT1-8E 同業主）"
+            },
+            "21-D": {
+                  "ddmm": "21/10",
+                  "fullDate": "2026/10/21 (星期三)",
+                  "sortKey": "2026-10-21T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "CT2-21D, CT5-22B 一同14:00收樓 VIP"
+            },
+            "11-G": {
+                  "ddmm": "22/10",
+                  "fullDate": "2026/10/22 (星期四)",
+                  "sortKey": "2026-10-22T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：YU807｜CT2-11G,19D 同業主 (11:30) VIP 原約當日15:30"
+            },
+            "19-D": {
+                  "ddmm": "22/10",
+                  "fullDate": "2026/10/22 (星期四)",
+                  "sortKey": "2026-10-22T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：YU807｜CT2-11G,19D 同業主 (11:30) VIP 原約當日15:30"
+            },
+            "20-A": {
+                  "ddmm": "22/10",
+                  "fullDate": "2026/10/22 (星期四)",
+                  "sortKey": "2026-10-22T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XS4993R / K3890"
+            },
+            "18-B": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：MY1807｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓"
+            },
+            "09-G": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：ZW8647 / UM766｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓"
+            },
+            "12-G": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：WL9088 / VT309｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓"
+            },
+            "20-G": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：ZU7046｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓"
+            },
+            "07-B": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：NA5970｜CT2-7B, 12H為親屬 14:00收樓, 有線拍攝待確定"
+            },
+            "21-E": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XR4999"
+            },
+            "12-H": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T14:45",
+                  "time": "14:45",
+                  "status": "updated",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：UD9682（更新車牌）｜CT2-7B, 12H為親屬 14:00收樓, 有線拍攝待確定"
+            },
+            "20-H": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T14:45",
+                  "time": "14:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓"
+            },
+            "01-F": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：會所餐廳門口等｜CT1-1F, CT1-8J, CT2-1F, CT2-20H 一同 15:30 收樓"
+            },
+            "12-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XD8428｜CT2-12C, CT2-8G 一同10:30 收樓"
+            },
+            "08-G": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XD8428｜CT2-12C, CT2-8G 一同10:30 收樓"
+            },
+            "17-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓"
+            },
+            "17-B": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓"
+            },
+            "15-D": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：HU4759｜原約29/10 14:45（改期至26/10 14:00）"
+            },
+            "20-D": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "05-C": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：KT1688｜CT2-5C, 6C同業主 CT3-9F為親戚 10:30 收樓"
+            },
+            "06-C": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT2-5C, 6C同業主 CT3-9F為親戚 10:30 收樓"
+            },
+            "15-H": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓"
+            },
+            "18-H": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DR1428｜CT1-16B, CT2-15H, CT2-18H 同業主 14:00 收樓"
+            },
+            "06-J": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜原約25/10更新為28/10 15:30"
+            },
+            "19-C": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同15:30收樓"
+            },
+            "17-A": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：YW4592｜原約23/10 16:15（改期至28/10 16:15）"
+            },
+            "11-A": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：KT1688｜CT2-11A, CT3-8F為親戚 10:30 收樓"
+            },
+            "10-G": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PN996 / ST722｜CT1-1G, 10A, 11A, CT2-10G 同業主一齊收樓 11:15"
+            },
+            "21-H": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓"
+            },
+            "19-H": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓"
+            },
+            "08-J": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DK698"
+            },
+            "16-H": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT2-21H, CT2-19H, CT2-16H 一同14:00收樓"
+            },
+            "05-B": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓"
+            },
+            "20-E": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：WD2208"
+            },
+            "17-H": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PZ2007｜CT1-16E, 16F, CT2-17H 同業主 14:00 收樓"
+            },
+            "06-G": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T16:15",
+                  "time": "16:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XD8428｜CT1-5A, CT2-6G 一同 15:30 收樓"
+            },
+            "06-H": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：NA5970｜原約24/10 14:00（改期至31/10 09:45）"
+            },
+            "16-D": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "06-B": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補"
+            },
+            "10-E": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "17-E": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "15-B": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "18-D": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ND902｜CT2-18D, CT5-21C 一同14:00 收樓"
+            },
+            "07-A": {
+                  "ddmm": "04/11",
+                  "fullDate": "2026/11/04 (星期三)",
+                  "sortKey": "2026-11-04T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZB3924｜CT1-8A, CT2-7A 為親屬 一齊收樓"
+            },
+            "12-F": {
+                  "ddmm": "07/11",
+                  "fullDate": "2026/11/07 (星期六)",
+                  "sortKey": "2026-11-07T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "06-A": {
+                  "ddmm": "09/11",
+                  "fullDate": "2026/11/09 (星期一)",
+                  "sortKey": "2026-11-09T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "01-D": {
+                  "ddmm": "08/10",
+                  "fullDate": "2026/10/08 (星期四)",
+                  "sortKey": "2026-10-08T12:30",
+                  "time": "12:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌: VE4824｜VIP（已收樓）"
+            },
+            "19-G": {
+                  "ddmm": "08/10",
+                  "fullDate": "2026/10/08 (星期四)",
+                  "sortKey": "2026-10-08T13:30",
+                  "time": "13:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "接待位置: 巴士候車室｜與CT5-5J為同一業主 VIP（已收樓）"
+            },
+            "19-E": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一) / 27 (星期二)",
+                  "sortKey": "2026-10-26T11:15",
+                  "time": "11:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：CA8900｜CT5-21J, CT2-19E 一同 11:15 收樓（另於 27/10 14:45 後補亦有登記一同 14:00 收樓）"
+            },
+            "10-D": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T11:15",
+                  "time": "11:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-8J, 8D, 10D, 21D 一同 09:45 收樓（單位欄標示 CT2 10D）"
+            },
+            "09-F": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T16:15",
+                  "time": "16:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜16:00 收樓"
+            }
       },
-
-      CT3: {
-        "01-D": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T15:30", time: "已收樓", status: "normal", vip: false, tag: "", note: "與 CT2-10B, CT2-1C, CT5-8J 關連/同一業主 (T18 格仔表紀錄)" },
-        "09-D": { ddmm: "17/10", fullDate: "2026/10/17 (星期六)", sortKey: "2026-10-17T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "與 CT5-27H, CT2-21A, 21J 14:00 一同收樓 (T18 格仔表紀錄)" },
-        "21-B": { ddmm: "18/10", fullDate: "2026/10/18 (星期日)", sortKey: "2026-10-18T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：JR2223" },
-        "05-B": { ddmm: "18/10", fullDate: "2026/10/18 (星期日)", sortKey: "2026-10-18T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT3-5B, CT3-5J 同業主 14:00 收樓" },
-        "05-J": { ddmm: "18/10", fullDate: "2026/10/18 (星期日)", sortKey: "2026-10-18T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT3-5B, CT3-5J 同業主 14:00 收樓" },
-        "19-G": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T10:00", time: "預約單", status: "normal", vip: false, tag: "", note: "預約單 20/10 (T18 格仔表紀錄)" },
-        "16-E": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T11:00", time: "正單", status: "normal", vip: false, tag: "", note: "正單日期 20/10 (T18 格仔表紀錄)" },
-        "10-G": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T12:00", time: "正單", status: "normal", vip: false, tag: "", note: "正單日期 20/10 (T18 格仔表紀錄)" },
-        "22-A": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：ZS8829｜CT3-22A, CT5-25J 同業主 16:15 收樓" },
-        "19-J": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：LT2018" },
-        "19-H": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "15-E": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同15:30收樓" },
-        "19-A": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "車牌：MY1807｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓" },
-        "21-G": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "車牌：DANFAN｜接待位置：巴士候車室" },
-        "10-H": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "21-A": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：ZS8829｜11:00 收樓" },
-        "16-F": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜11:00 收樓" },
-        "22-C": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "15-B": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "22-G": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：DANFAN｜原約當日 09:45" },
-        "17-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T09:45", time: "09:45", status: "updated", vip: true, tag: "VIP", note: "車牌：HS9668｜VIP 原約 24/10" },
-        "23-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：PP4917" },
-        "22-D": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：PT4357｜CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓" },
-        "22-E": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：PT4357｜CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓" },
-        "16-G": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "23-F": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:45", time: "14:45", status: "new", vip: false, tag: "", note: "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓" },
-        "23-D": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：PT4357｜CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓" },
-        "22-B": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T15:30", time: "15:30", status: "normal", vip: true, tag: "VIP", note: "車牌：VD1929｜VIP" },
-        "23-H": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "22-F": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T16:15", time: "16:15", status: "new", vip: false, tag: "", note: "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓" },
-        "18-H": { ddmm: "27/10", fullDate: "2026/10/27 (星期二)", sortKey: "2026-10-27T15:30", time: "15:30", status: "normal", vip: true, tag: "VIP", note: "車牌：UN9880｜CT3-18H, 21H, CT5-3F 15:30 收樓 VIP" },
-        "21-H": { ddmm: "27/10", fullDate: "2026/10/27 (星期二)", sortKey: "2026-10-27T15:30", time: "15:30", status: "normal", vip: true, tag: "VIP", note: "車牌：UN9880｜CT3-18H, 21H, CT5-3F 15:30 收樓 VIP" },
-        "09-F": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "CT2-5C, 6C 同業主，CT3-9F 為親戚 10:30 收樓" },
-        "12-F": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同 15:30 收樓" },
-        "15-F": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同 15:30 收樓" },
-        "20-J": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T09:45", time: "09:45", status: "new", vip: false, tag: "", note: "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓" },
-        "20-E": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T09:45", time: "09:45", status: "new", vip: false, tag: "", note: "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓" },
-        "21-E": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T10:30", time: "10:30", status: "new", vip: false, tag: "", note: "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓" },
-        "08-F": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：KT1688｜CT2-11A, CT3-8F 為親戚 10:30 收樓" },
-        "19-E": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T12:00", time: "12:00", status: "new", vip: false, tag: "", note: "接待位置：後補" },
-        "11-E": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T12:00", time: "12:00", status: "new", vip: false, tag: "", note: "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓" },
-        "12-A": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：VF1842" },
-        "23-B": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：XT6958" },
-        "17-G": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "11-D": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T09:45", time: "09:45", status: "updated", vip: true, tag: "VIP", note: "接待位置：巴士候車室｜VIP 原約當日 10:30" },
-        "25-C": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：JK830" },
-        "21-C": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：LY9400" },
-        "20-F": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T11:15", time: "11:15", status: "new", vip: false, tag: "", note: "車牌：NY5030｜11:00 收樓" },
-        "12-E": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：WW5650" },
-        "17-F": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T14:00", time: "14:00", status: "new", vip: false, tag: "", note: "車牌：YM3902" },
-        "12-H": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：BR1｜接待位置：巴士候車室" },
-        "26-B": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜原約 2/11" },
-        "17-D": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：後補｜CT3-17D, CT3-17E, CT5-26F 一同 15:30 收樓" },
-        "17-E": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "接待位置：後補｜CT3-17D, CT3-17E, CT5-26F 一同 15:30 收樓" },
-        "08-C": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T15:30", time: "15:30", status: "new", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "20-D": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "車牌：XS3820" },
-        "18-G": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "19-C": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T10:30", time: "10:30", status: "new", vip: false, tag: "", note: "接待位置：後補｜CT3-19C, CT3-22H 一同 10:30 收樓" },
-        "22-H": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T11:15", time: "11:15", status: "new", vip: false, tag: "", note: "接待位置：後補｜CT3-19C, CT3-22H 一同 10:30 收樓" },
-        "12-B": { ddmm: "01/11", fullDate: "2026/11/01 (星期日)", sortKey: "2026-11-01T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "車牌：YU2381" },
-        "G2-C": { ddmm: "04/11", fullDate: "2026/11/04 (星期三)", sortKey: "2026-11-04T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：XH3422" },
-        "18-F": { ddmm: "05/11", fullDate: "2026/11/05 (星期四)", sortKey: "2026-11-05T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "19-B": { ddmm: "08/11", fullDate: "2026/11/08 (星期日)", sortKey: "2026-11-08T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜原約 1/11" },
-        "11-B": { ddmm: "10/11", fullDate: "2026/11/10 (星期二)", sortKey: "2026-11-10T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT3-11B, CT3-16B 一同 10:30 收樓（原約 5/11）" },
-        "16-B": { ddmm: "10/11", fullDate: "2026/11/10 (星期二)", sortKey: "2026-11-10T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜CT3-11B, CT3-16B 一同 10:30 收樓（原約 5/11）" }
+      "CT3": {
+            "01-D": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T15:30",
+                  "time": "已收樓",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "與 CT2-10B, CT2-1C, CT5-8J 關連/同一業主 (T18 格仔表紀錄)"
+            },
+            "09-D": {
+                  "ddmm": "17/10",
+                  "fullDate": "2026/10/17 (星期六)",
+                  "sortKey": "2026-10-17T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "與 CT5-27H, CT2-21A, 21J 14:00 一同收樓 (T18 格仔表紀錄)"
+            },
+            "21-B": {
+                  "ddmm": "18/10",
+                  "fullDate": "2026/10/18 (星期日)",
+                  "sortKey": "2026-10-18T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：JR2223"
+            },
+            "05-B": {
+                  "ddmm": "18/10",
+                  "fullDate": "2026/10/18 (星期日)",
+                  "sortKey": "2026-10-18T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT3-5B, CT3-5J 同業主 14:00 收樓"
+            },
+            "05-J": {
+                  "ddmm": "18/10",
+                  "fullDate": "2026/10/18 (星期日)",
+                  "sortKey": "2026-10-18T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT3-5B, CT3-5J 同業主 14:00 收樓"
+            },
+            "19-G": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T10:00",
+                  "time": "預約單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "預約單",
+                  "note": "20/10 預約單｜原約 14/10 16:15 巴士候車室（原約16/10）"
+            },
+            "16-E": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T11:00",
+                  "time": "正單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 20/10 (T18 格仔表紀錄)"
+            },
+            "10-G": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T12:00",
+                  "time": "正單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 20/10 (T18 格仔表紀錄)"
+            },
+            "22-A": {
+                  "ddmm": "21/10",
+                  "fullDate": "2026/10/21 (星期三)",
+                  "sortKey": "2026-10-21T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZS8829｜CT3-22A, CT5-25J 同業主 16:15 收樓"
+            },
+            "19-J": {
+                  "ddmm": "22/10",
+                  "fullDate": "2026/10/22 (星期四)",
+                  "sortKey": "2026-10-22T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：LT2018"
+            },
+            "19-H": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "15-E": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同15:30收樓"
+            },
+            "19-A": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：MY1807｜CT2-9G, 20G, 12G, 18B, CT3-19A 同業主 VIP 14:00 收樓"
+            },
+            "21-G": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DANFAN｜接待位置：巴士候車室"
+            },
+            "10-H": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "21-A": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZS8829｜11:00 收樓"
+            },
+            "16-F": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜11:00 收樓"
+            },
+            "22-C": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "15-B": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "22-G": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DANFAN｜原約當日 09:45"
+            },
+            "17-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T09:45",
+                  "time": "09:45",
+                  "status": "updated",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：HS9668｜VIP 原約 24/10"
+            },
+            "23-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PP4917"
+            },
+            "22-D": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PT4357｜CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓"
+            },
+            "22-E": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PT4357｜CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓"
+            },
+            "16-G": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "23-F": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:45",
+                  "time": "14:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓"
+            },
+            "23-D": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PT4357｜CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓"
+            },
+            "22-B": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：VD1929｜VIP"
+            },
+            "23-H": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "22-F": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T16:15",
+                  "time": "16:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：TH3313｜CT2-17B, 17C, CT3-22F, 23F 一同 15:30 收樓"
+            },
+            "18-H": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：UN9880｜CT3-18H, 21H, CT5-3F 15:30 收樓 VIP"
+            },
+            "21-H": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：UN9880｜CT3-18H, 21H, CT5-3F 15:30 收樓 VIP"
+            },
+            "09-F": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT2-5C, 6C 同業主，CT3-9F 為親戚 10:30 收樓"
+            },
+            "12-F": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同 15:30 收樓"
+            },
+            "15-F": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：WF1591｜CT2-19C, CT3-12F, CT3-15F 一同 15:30 收樓"
+            },
+            "20-J": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T09:45",
+                  "time": "09:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓"
+            },
+            "20-E": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T09:45",
+                  "time": "09:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓"
+            },
+            "21-E": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T10:30",
+                  "time": "10:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓"
+            },
+            "08-F": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：KT1688｜CT2-11A, CT3-8F 為親戚 10:30 收樓"
+            },
+            "19-E": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T12:00",
+                  "time": "12:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補"
+            },
+            "11-E": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T12:00",
+                  "time": "12:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-11E, 20E, 20J, 21E 一同 09:45 收樓"
+            },
+            "12-A": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：VF1842"
+            },
+            "23-B": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XT6958"
+            },
+            "17-G": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "11-D": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T09:45",
+                  "time": "09:45",
+                  "status": "updated",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "接待位置：巴士候車室｜VIP 原約當日 10:30"
+            },
+            "25-C": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：JK830"
+            },
+            "21-C": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：LY9400"
+            },
+            "20-F": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T14:45",
+                  "time": "14:45",
+                  "status": "updated",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：NY5030｜原約當日 11:00"
+            },
+            "12-E": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：WW5650"
+            },
+            "17-F": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：YM3902"
+            },
+            "12-H": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：BR1｜接待位置：巴士候車室"
+            },
+            "26-B": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜原約 2/11"
+            },
+            "17-D": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-17D, CT3-17E, CT5-26F 一同 15:30 收樓"
+            },
+            "17-E": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-17D, CT3-17E, CT5-26F 一同 15:30 收樓"
+            },
+            "08-C": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "20-D": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XS3820"
+            },
+            "18-G": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "19-C": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T10:30",
+                  "time": "10:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-19C, CT3-22H 一同 10:30 收樓"
+            },
+            "22-H": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T11:15",
+                  "time": "11:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-19C, CT3-22H 一同 10:30 收樓"
+            },
+            "12-B": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：YU2381"
+            },
+            "G2-C": {
+                  "ddmm": "04/11",
+                  "fullDate": "2026/11/04 (星期三)",
+                  "sortKey": "2026-11-04T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XH3422"
+            },
+            "18-F": {
+                  "ddmm": "05/11",
+                  "fullDate": "2026/11/05 (星期四)",
+                  "sortKey": "2026-11-05T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "19-B": {
+                  "ddmm": "08/11",
+                  "fullDate": "2026/11/08 (星期日)",
+                  "sortKey": "2026-11-08T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜原約 1/11"
+            },
+            "11-B": {
+                  "ddmm": "10/11",
+                  "fullDate": "2026/11/10 (星期二)",
+                  "sortKey": "2026-11-10T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT3-11B, CT3-16B 一同 10:30 收樓（原約 5/11）"
+            },
+            "16-B": {
+                  "ddmm": "10/11",
+                  "fullDate": "2026/11/10 (星期二)",
+                  "sortKey": "2026-11-10T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜CT3-11B, CT3-16B 一同 10:30 收樓（原約 5/11）"
+            },
+            "11-J": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T09:45",
+                  "time": "09:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "16-D": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T14:00",
+                  "time": "14:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：AV93"
+            },
+            "07-J": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T11:15",
+                  "time": "11:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：JM6638｜CT3-7J, CT3-17B 12:00 收樓"
+            },
+            "17-B": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T12:00",
+                  "time": "12:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：JM6638｜CT3-7J, CT3-17B 12:00 收樓"
+            },
+            "01-J": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T09:45",
+                  "time": "09:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "08-J": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T09:45",
+                  "time": "09:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-8J, 8D, 10D, 21D 一同 09:45 收樓"
+            },
+            "08-D": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T10:30",
+                  "time": "10:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-8J, 8D, 10D, 21D 一同 09:45 收樓"
+            },
+            "21-D": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T12:00",
+                  "time": "12:00",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-8J, 8D, 10D, 21D 一同 09:45 收樓"
+            }
       },
-
-      CT5: {
-        "03-C": { ddmm: "02/10", fullDate: "2026/10/02 (星期五)", sortKey: "2026-10-02T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T17 格仔表紀錄)" },
-        "05-J": { ddmm: "08/10", fullDate: "2026/10/08 (星期四)", sortKey: "2026-10-08T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T17 格仔表紀錄)" },
-        "12-A": { ddmm: "13/10", fullDate: "2026/10/13 (星期二)", sortKey: "2026-10-13T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T17 格仔表紀錄)" },
-        "09-J": { ddmm: "14/10", fullDate: "2026/10/14 (星期三)", sortKey: "2026-10-14T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T17 格仔表紀錄)" },
-        "23-B": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T10:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T17 格仔表紀錄)" },
-        "08-A": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T11:00", time: "已收樓", status: "normal", vip: false, tag: "", note: "早期已完成收樓 (T17 格仔表紀錄)" },
-        "08-J": { ddmm: "16/10", fullDate: "2026/10/16 (星期五)", sortKey: "2026-10-16T15:30", time: "已收樓", status: "normal", vip: false, tag: "", note: "與 CT2-1C, CT2-10B, CT3-1D 同業主/關連單位 (T17 格仔表紀錄)" },
-        "05-D": { ddmm: "17/10", fullDate: "2026/10/17 (星期六)", sortKey: "2026-10-17T10:00", time: "正單", status: "normal", vip: false, tag: "", note: "正單日期 17/10 (T17 格仔表紀錄)" },
-        "27-A": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T10:00", time: "正單", status: "normal", vip: false, tag: "", note: "正單日期 20/10 (T17 格仔表紀錄)" },
-        "23-F": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T11:00", time: "正單", status: "normal", vip: false, tag: "", note: "正單日期 20/10 (T17 格仔表紀錄)" },
-        "08-F": { ddmm: "20/10", fullDate: "2026/10/20 (星期二)", sortKey: "2026-10-20T12:00", time: "正單", status: "normal", vip: false, tag: "", note: "正單日期 20/10 (T17 格仔表紀錄)" },
-        "17-A": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：LR8222" },
-        "22-B": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "CT2-21D, CT5-22B 一同 14:00 收樓 VIP" },
-        "25-J": { ddmm: "21/10", fullDate: "2026/10/21 (星期三)", sortKey: "2026-10-21T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：DANFAN｜CT3-22A, CT5-25J 同業主 16:15 收樓" },
-        "27-H": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T10:00", time: "預約單", status: "normal", vip: false, tag: "", note: "預約單 22/10（與 CT2-21A, 21J, CT3-9D 關連）" },
-        "27-D": { ddmm: "22/10", fullDate: "2026/10/22 (星期四)", sortKey: "2026-10-22T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：VR1196｜原約 29/10 12:00" },
-        "12-G": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：XD8428｜原約 21/10" },
-        "20-F": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同 15:30 收樓" },
-        "21-F": { ddmm: "23/10", fullDate: "2026/10/23 (星期五)", sortKey: "2026-10-23T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同 15:30 收樓" },
-        "19-J": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：RW4279｜CT5-19J, 19E 為親屬 一齊收樓" },
-        "19-E": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：RW4279｜CT5-19J, 19E 為親屬 一齊收樓" },
-        "22-A": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T15:30", time: "15:30", status: "normal", vip: false, tag: "", note: "車牌：ZK8164" },
-        "25-E": { ddmm: "24/10", fullDate: "2026/10/24 (星期六)", sortKey: "2026-10-24T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "21-H": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "27-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "接待位置：後補" },
-        "12-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:00", time: "14:00", status: "normal", vip: true, tag: "VIP", note: "車牌：XE5001｜VIP" },
-        "23-C": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：WHW327X｜BY INTAKE APP" },
-        "26-A": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：後補｜BY INTAKE APP" },
-        "25-D": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T15:30", time: "15:30", status: "new", vip: false, tag: "", note: "車牌：6686" },
-        "18-H": { ddmm: "25/10", fullDate: "2026/10/25 (星期日)", sortKey: "2026-10-25T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓" },
-        "11-F": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "車牌：DL87｜CT5-11F, 15F, 16F 一同 10:00 收樓" },
-        "18-A": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T09:45", time: "09:45", status: "new", vip: false, tag: "", note: "車牌：LR7778" },
-        "15-F": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：DL87｜CT5-11F, 15F, 16F 一同 10:00 收樓" },
-        "16-F": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：DL87｜CT5-11F, 15F, 16F 一同 10:00 收樓" },
-        "26-H": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T12:00", time: "12:00", status: "normal", vip: false, tag: "", note: "待覆" },
-        "26-C": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：BH7888" },
-        "22-C": { ddmm: "26/10", fullDate: "2026/10/26 (星期一)", sortKey: "2026-10-26T15:30", time: "15:30", status: "new", vip: false, tag: "", note: "車牌：HA2239｜BY INTAKE APP" },
-        "25-H": { ddmm: "27/10", fullDate: "2026/10/27 (星期二)", sortKey: "2026-10-27T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：NOREGRET" },
-        "03-F": { ddmm: "27/10", fullDate: "2026/10/27 (星期二)", sortKey: "2026-10-27T16:15", time: "16:15", status: "normal", vip: true, tag: "VIP", note: "車牌：UN9880｜CT3-18H, 21H, CT5-3F 15:30 收樓 VIP" },
-        "21-D": { ddmm: "27/10", fullDate: "2026/10/27 (星期二)", sortKey: "2026-10-27T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "17-G": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T10:30", time: "10:30", status: "updated", vip: false, tag: "", note: "車牌：UD9682｜原約 24/10" },
-        "06-D": { ddmm: "28/10", fullDate: "2026/10/28 (星期三)", sortKey: "2026-10-28T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：US1196" },
-        "20-A": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "車牌：KC9814" },
-        "23-D": { ddmm: "29/10", fullDate: "2026/10/29 (星期四)", sortKey: "2026-10-29T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：DL229" },
-        "25-G": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓" },
-        "17-C": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T09:45", time: "09:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室｜原約 25/10" },
-        "02-J": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T10:30", time: "10:30", status: "normal", vip: false, tag: "", note: "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓" },
-        "20-G": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓" },
-        "11-E": { ddmm: "30/10", fullDate: "2026/10/30 (星期五)", sortKey: "2026-10-30T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "接待位置：巴士候車室" },
-        "23-H": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T10:30", time: "10:30", status: "new", vip: false, tag: "", note: "接待位置：後補" },
-        "21-B": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T11:15", time: "11:15", status: "normal", vip: false, tag: "", note: "車牌：M303B｜CT1-6E, CT5-21B 一同 10:30 收樓（原約 24/10）" },
-        "15-E": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T11:15", time: "11:15", status: "new", vip: false, tag: "", note: "車牌：ZH5337（Booking List 原文標示 155E）" },
-        "18-C": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T14:00", time: "14:00", status: "normal", vip: false, tag: "", note: "車牌：NZ3700" },
-        "26-F": { ddmm: "31/10", fullDate: "2026/10/31 (星期六)", sortKey: "2026-10-31T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "接待位置：後補｜CT3-17D, CT3-17E, CT5-26F 一同 15:30 收樓" },
-        "21-C": { ddmm: "03/11", fullDate: "2026/11/03 (星期二)", sortKey: "2026-11-03T14:45", time: "14:45", status: "normal", vip: false, tag: "", note: "車牌：ND902｜CT2-18D, CT5-21C 一同 14:00 收樓" },
-        "19-B": { ddmm: "06/11", fullDate: "2026/11/06 (星期五)", sortKey: "2026-11-06T16:15", time: "16:15", status: "normal", vip: false, tag: "", note: "車牌：ZZ6278｜CT5-19B, CT1-9D 為親屬一齊收樓" }
+      "CT5": {
+            "03-C": {
+                  "ddmm": "02/10",
+                  "fullDate": "2026/10/02 (星期五)",
+                  "sortKey": "2026-10-02T16:00",
+                  "time": "16:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "蔡小姐｜車牌: UJ885｜VIP（已收樓）"
+            },
+            "05-J": {
+                  "ddmm": "08/10",
+                  "fullDate": "2026/10/08 (星期四)",
+                  "sortKey": "2026-10-08T13:30",
+                  "time": "13:30",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "接待位置: 巴士候車室｜與CT2-19G為同一業主 VIP（已收樓）"
+            },
+            "12-A": {
+                  "ddmm": "13/10",
+                  "fullDate": "2026/10/13 (星期二)",
+                  "sortKey": "2026-10-13T15:00",
+                  "time": "15:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌: NH8745｜VIP（已收樓）"
+            },
+            "09-J": {
+                  "ddmm": "14/10",
+                  "fullDate": "2026/10/14 (星期三)",
+                  "sortKey": "2026-10-14T10:00",
+                  "time": "已收樓",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "早期已完成收樓 (T17 格仔表紀錄)"
+            },
+            "23-B": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T10:00",
+                  "time": "已收樓",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "早期已完成收樓 (T17 格仔表紀錄)"
+            },
+            "08-A": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌: XY9819｜VIP（已收樓）"
+            },
+            "08-J": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T15:30",
+                  "time": "已收樓",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "與 CT2-1C, CT2-10B, CT3-1D 同業主/關連單位 (T17 格仔表紀錄)"
+            },
+            "05-D": {
+                  "ddmm": "17/10",
+                  "fullDate": "2026/10/17 (星期六)",
+                  "sortKey": "2026-10-17T10:00",
+                  "time": "正單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 17/10 (T17 格仔表紀錄)"
+            },
+            "27-A": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T10:00",
+                  "time": "正單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 20/10 (T17 格仔表紀錄)"
+            },
+            "23-F": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T11:00",
+                  "time": "正單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 20/10 (T17 格仔表紀錄)"
+            },
+            "08-F": {
+                  "ddmm": "20/10",
+                  "fullDate": "2026/10/20 (星期二)",
+                  "sortKey": "2026-10-20T12:00",
+                  "time": "正單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "正單日期 20/10 (T17 格仔表紀錄)"
+            },
+            "17-A": {
+                  "ddmm": "21/10",
+                  "fullDate": "2026/10/21 (星期三)",
+                  "sortKey": "2026-10-21T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：LR8222"
+            },
+            "22-B": {
+                  "ddmm": "21/10",
+                  "fullDate": "2026/10/21 (星期三)",
+                  "sortKey": "2026-10-21T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "CT2-21D, CT5-22B 一同 14:00 收樓 VIP"
+            },
+            "25-J": {
+                  "ddmm": "21/10",
+                  "fullDate": "2026/10/21 (星期三)",
+                  "sortKey": "2026-10-21T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DANFAN｜CT3-22A, CT5-25J 同業主 16:15 收樓"
+            },
+            "27-H": {
+                  "ddmm": "22/10",
+                  "fullDate": "2026/10/22 (星期四)",
+                  "sortKey": "2026-10-22T10:00",
+                  "time": "預約單",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "預約單 22/10（與 CT2-21A, 21J, CT3-9D 關連）"
+            },
+            "27-D": {
+                  "ddmm": "22/10",
+                  "fullDate": "2026/10/22 (星期四)",
+                  "sortKey": "2026-10-22T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：VR1196｜原約 29/10 12:00"
+            },
+            "12-G": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：XD8428｜原約 21/10"
+            },
+            "20-F": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同 15:30 收樓"
+            },
+            "21-F": {
+                  "ddmm": "23/10",
+                  "fullDate": "2026/10/23 (星期五)",
+                  "sortKey": "2026-10-23T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：PE6380/DY115｜CT3-15E, CT5-20F, 21F, CT1-10D 一同 15:30 收樓"
+            },
+            "19-J": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：RW4279｜CT5-19J, 19E 為親屬 一齊收樓"
+            },
+            "19-E": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：RW4279｜CT5-19J, 19E 為親屬 一齊收樓"
+            },
+            "22-A": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T15:30",
+                  "time": "15:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZK8164"
+            },
+            "25-E": {
+                  "ddmm": "24/10",
+                  "fullDate": "2026/10/24 (星期六)",
+                  "sortKey": "2026-10-24T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "21-H": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "27-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補"
+            },
+            "12-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：XE5001｜VIP"
+            },
+            "23-C": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：WHW327X｜BY INTAKE APP"
+            },
+            "26-A": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜BY INTAKE APP"
+            },
+            "25-D": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：6686"
+            },
+            "18-H": {
+                  "ddmm": "25/10",
+                  "fullDate": "2026/10/25 (星期日)",
+                  "sortKey": "2026-10-25T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "CT3-22D, 22E, 23D 同業主，CT5-18H 為親戚 14:00 收樓"
+            },
+            "11-F": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DL87｜CT5-11F, 15F, 16F 一同 10:00 收樓"
+            },
+            "18-A": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T09:45",
+                  "time": "09:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：LR7778"
+            },
+            "15-F": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DL87｜CT5-11F, 15F, 16F 一同 10:00 收樓"
+            },
+            "16-F": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DL87｜CT5-11F, 15F, 16F 一同 10:00 收樓"
+            },
+            "26-H": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T12:00",
+                  "time": "12:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "待覆"
+            },
+            "26-C": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：BH7888"
+            },
+            "22-C": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一)",
+                  "sortKey": "2026-10-26T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：HA2239｜BY INTAKE APP"
+            },
+            "25-H": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：NOREGRET"
+            },
+            "03-F": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": true,
+                  "tag": "VIP",
+                  "note": "車牌：UN9880｜CT3-18H, 21H, CT5-3F 15:30 收樓 VIP"
+            },
+            "21-D": {
+                  "ddmm": "27/10",
+                  "fullDate": "2026/10/27 (星期二)",
+                  "sortKey": "2026-10-27T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "17-G": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T10:30",
+                  "time": "10:30",
+                  "status": "updated",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：UD9682｜原約 24/10"
+            },
+            "06-D": {
+                  "ddmm": "28/10",
+                  "fullDate": "2026/10/28 (星期三)",
+                  "sortKey": "2026-10-28T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：US1196"
+            },
+            "20-A": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：KC9814"
+            },
+            "23-D": {
+                  "ddmm": "29/10",
+                  "fullDate": "2026/10/29 (星期四)",
+                  "sortKey": "2026-10-29T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：DL229"
+            },
+            "25-G": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓"
+            },
+            "17-C": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T09:45",
+                  "time": "09:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室｜原約 25/10"
+            },
+            "02-J": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T10:30",
+                  "time": "10:30",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓"
+            },
+            "20-G": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：人閘｜CT5-25G, 2J, 20G, CT2-5B 同業主 09:45 收樓"
+            },
+            "11-E": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "23-H": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T10:30",
+                  "time": "10:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補"
+            },
+            "21-B": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T11:15",
+                  "time": "11:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：M303B｜CT1-6E, CT5-21B 一同 10:30 收樓（原約 24/10）"
+            },
+            "15-E": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T11:15",
+                  "time": "11:15",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZH5337（Booking List 原文標示 155E）"
+            },
+            "18-C": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：NZ3700"
+            },
+            "26-F": {
+                  "ddmm": "31/10",
+                  "fullDate": "2026/10/31 (星期六)",
+                  "sortKey": "2026-10-31T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：後補｜CT3-17D, CT3-17E, CT5-26F 一同 15:30 收樓"
+            },
+            "21-C": {
+                  "ddmm": "03/11",
+                  "fullDate": "2026/11/03 (星期二)",
+                  "sortKey": "2026-11-03T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ND902｜CT2-18D, CT5-21C 一同 14:00 收樓"
+            },
+            "19-B": {
+                  "ddmm": "06/11",
+                  "fullDate": "2026/11/06 (星期五)",
+                  "sortKey": "2026-11-06T16:15",
+                  "time": "16:15",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：ZZ6278｜CT5-19B, CT1-9D 為親屬一齊收樓"
+            },
+            "03-G": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T14:00",
+                  "time": "14:00",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置: 巴士候車室｜與CT1-3H為同一業主（已收樓）"
+            },
+            "03-H": {
+                  "ddmm": "16/10",
+                  "fullDate": "2026/10/16 (星期五)",
+                  "sortKey": "2026-10-16T14:45",
+                  "time": "14:45",
+                  "status": "normal",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置: 巴士候車室｜與CT1-3G為同一業主（已收樓）"
+            },
+            "21-J": {
+                  "ddmm": "26/10",
+                  "fullDate": "2026/10/26 (星期一) / 27 (星期二)",
+                  "sortKey": "2026-10-26T10:30",
+                  "time": "10:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "車牌：CA8900｜CT5-21J, CT2-19E 一同 11:15 收樓（另於 27/10 14:00 後補亦有登記一同 14:00 收樓）"
+            },
+            "10-B": {
+                  "ddmm": "30/10",
+                  "fullDate": "2026/10/30 (星期五)",
+                  "sortKey": "2026-10-30T15:30",
+                  "time": "15:30",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            },
+            "19-D": {
+                  "ddmm": "01/11",
+                  "fullDate": "2026/11/01 (星期日)",
+                  "sortKey": "2026-11-01T14:45",
+                  "time": "14:45",
+                  "status": "new",
+                  "vip": false,
+                  "tag": "",
+                  "note": "接待位置：巴士候車室"
+            }
       }
     };
 
@@ -824,7 +2929,7 @@
     let listSortBy = "date";
     let listScope = "tower"; // "tower" | "all"
 
-    const STORAGE_KEY = "ss2a_all_towers_bookings_v5_1023_1430";
+    const STORAGE_KEY = "ss2a_all_towers_bookings_v8_1023_1655";
 
     function loadData() {
       try {
@@ -1627,7 +3732,7 @@
         document.getElementById("searchInput").value = "";
         document.getElementById("btnClearSearch").classList.add("hidden");
         renderAll();
-        showToast("已還原全屋苑 4 座預設預約資料 (2026/10/23 14:31 版本)");
+        showToast("已還原全屋苑 4 座預設預約資料 (2026/10/23 16:54 版本)");
       });
     });
   </script>
