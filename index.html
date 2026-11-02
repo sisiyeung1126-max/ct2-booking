@@ -142,7 +142,7 @@
           <h1 id="headerMainTitle" class="text-lg sm:text-xl font-bold tracking-tight">Sierra Sea 2A 單位預約格仔表及負責同事查看平台</h1>
         </div>
         <p class="text-xs sm:text-sm text-sky-100/90 mt-1">
-          涵蓋日期：2026/10/02 至 2026/11/21 ｜ 資料更新時間：<span id="lastUpdatedLabel">2026/11/02 15:12 (已同步 11/02 15:12 全屋苑最新 Booking List，更新前紀錄標示為深灰已收樓)</span>
+          涵蓋日期：2026/10/02 至 2026/11/21 ｜ 資料更新時間：<span id="lastUpdatedLabel">2026/11/02 19:01 (已同步 11/02 19:01 全屋苑最新 Booking List，更新前紀錄標示為深灰已收樓，僅72小時內新增者標註為新預約)</span>
         </p>
       </div>
 
@@ -210,7 +210,7 @@
             【藍色】更新預約 (<span id="count-updated">2</span>)
           </button>
           <button type="button" data-status="new" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-[#FDE047] text-[#422006] border-yellow-400 hover:opacity-90">
-            【黃色】新預約 (<span id="count-new">9</span>)
+            【黃色】新預約 (72小時內) (<span id="count-new">9</span>)
           </button>
           <button type="button" data-status="cancelled" class="status-pill px-3 py-1.5 rounded-lg text-xs font-semibold border transition bg-[#FECDD3] text-[#7F1D1D] border-rose-300 hover:opacity-90">
             【粉紅】已取消 (<span id="count-cancelled">0</span>)
@@ -352,26 +352,27 @@
         <div class="flex items-center gap-2">
           <span class="text-base">📌</span>
           <h3 class="text-sm sm:text-base font-bold tracking-tight">每日更新重點紀錄 (Daily Update Highlights)</h3>
-          <span class="bg-amber-400 text-slate-950 text-[11px] font-extrabold px-2 py-0.5 rounded-full">最新：2026/11/02 15:12</span>
+          <span class="bg-amber-400 text-slate-950 text-[11px] font-extrabold px-2 py-0.5 rounded-full">最新：2026/11/02 19:01</span>
         </div>
         <div class="flex flex-wrap items-center gap-1.5 no-print" id="updateLogFilterBar">
-          <button type="button" data-log-filter="latest" class="log-filter-btn bg-white text-slate-900 font-bold text-xs px-2.5 py-1 rounded-lg shadow-2xs transition">只看最新 (11/02 15:12)</button>
-          <button type="button" data-log-filter="all" class="log-filter-btn bg-white/15 hover:bg-white/25 text-white font-medium text-xs px-2.5 py-1 rounded-lg transition">顯示歷次更新紀錄 (共 21 次)</button>
+          <button type="button" data-log-filter="latest" class="log-filter-btn bg-white text-slate-900 font-bold text-xs px-2.5 py-1 rounded-lg shadow-2xs transition">只看最新 (11/02 19:01)</button>
+          <button type="button" data-log-filter="all" class="log-filter-btn bg-white/15 hover:bg-white/25 text-white font-medium text-xs px-2.5 py-1 rounded-lg transition">顯示歷次更新紀錄 (共 23 次)</button>
         </div>
       </div>
 
       <div class="p-4 space-y-4">
-        <!-- Latest Batch: 2026/11/02 15:12 -->
+        <!-- Latest Batch: 2026/11/02 19:01 -->
         <div data-log-batch="latest" class="border border-sky-200 bg-sky-50/40 rounded-xl p-3.5 sm:p-4 space-y-3">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b border-sky-200/80 pb-2.5">
             <div class="flex items-center gap-2">
-              <span class="bg-sky-700 text-white text-xs font-bold px-2.5 py-0.5 rounded-md">2026/11/02 15:12 更新</span>
-              <span class="text-xs sm:text-sm font-bold text-slate-800">SS 2A Booking list 20261102(0328).pdf</span>
+              <span class="bg-sky-700 text-white text-xs font-bold px-2.5 py-0.5 rounded-md">2026/11/02 19:01 更新</span>
+              <span class="text-xs sm:text-sm font-bold text-slate-800">SS 2A Booking list 20261102(0648).pdf (19:01)</span>
             </div>
             <div class="flex flex-wrap items-center gap-1.5 text-xs">
-              <span class="bg-[#FDE047] text-[#422006] font-bold px-2 py-0.5 rounded">本輪新增 9 伙 (全盤累計 482 伙)</span>
-              <span class="bg-[#64748B] text-white font-bold px-2 py-0.5 rounded">今日已完成收樓 24 伙</span>
-              <span class="bg-[#64748B] text-white font-bold px-2 py-0.5 rounded">已收樓累計 299 伙</span>
+              <span class="bg-[#FDE047] text-[#422006] font-bold px-2 py-0.5 rounded">本輪新增 1 伙 (全盤累計 508 伙)</span>
+              <span class="bg-[#64748B] text-white font-bold px-2 py-0.5 rounded">今日完成 33 伙</span>
+              <span class="bg-[#64748B] text-white font-bold px-2 py-0.5 rounded">已收樓累計 308 伙</span>
+              <span class="bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">72小時新預約規則同步生效 (65 伙)</span>
             </div>
           </div>
 
@@ -388,95 +389,11 @@
               </thead>
               <tbody class="divide-y divide-slate-200/80 bg-white">
                 <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/02 (一)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">09:45–14:45</td>
-                  <td class="py-1.5 px-2.5 font-bold"><span class="text-slate-800">今日 24 伙收樓完成</span></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#64748B] text-white font-bold px-1.5 py-0.5 rounded">今日完成 (深灰)</span></td>
-                  <td class="py-1.5 px-2.5">今日 15:12 前之 24 伙預約（CT1-7C/9F/11B/16H/2B/3B/5B、CT2-19A/10D/12J/7F、CT3-18D/18E/6H、CT5-7F/19F/11A/25A/25C/17H/26G/20D/15A/25F）已全數順利完成交樓</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/03 (二)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">15:30</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT1-09-C" class="text-sky-800 hover:underline">CT1 9C</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#93C5FD] text-[#0C2D57] font-bold px-1.5 py-0.5 rounded">時間改期 (藍)</span></td>
-                  <td class="py-1.5 px-2.5">接待位置：巴士候車室｜原約當日 14:45 改為 15:30</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/04 (三)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">10:30</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT2-05-J" class="text-sky-800 hover:underline">CT2 5J</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">接待位置：巴士候車室</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/04 (三)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">12:00</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT1-08-C" class="text-sky-800 hover:underline">CT1 8C</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">車牌：FG1688 (BY INTAKE APP)</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/04 (三)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">12:00</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT2-22-C" class="text-sky-800 hover:underline">CT2 22C</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">車牌：UX1484</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
                   <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/05 (四)</td>
                   <td class="py-1.5 px-2.5 font-semibold">09:45</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT3-09-G" class="text-sky-800 hover:underline">CT3 9G</button></td>
+                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT5-16-C" class="text-sky-800 hover:underline">CT5 16C</button></td>
                   <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">BY INTAKE APP</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/06 (五)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">10:30</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT5-01-J" class="text-sky-800 hover:underline">CT5 1J</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">接待位置：巴士候車室</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/06 (五)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">14:00</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT3-G2-D" class="text-sky-800 hover:underline">CT3 G2D</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#93C5FD] text-[#0C2D57] font-bold px-1.5 py-0.5 rounded">時間改期 (藍)</span></td>
-                  <td class="py-1.5 px-2.5">接待位置：後補｜原約當日 09:45 改為 14:00</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/07 (六)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">12:00</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT5-12-F" class="text-sky-800 hover:underline">CT5 12F</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#93C5FD] text-[#0C2D57] font-bold px-1.5 py-0.5 rounded">補全車牌 (藍)</span></td>
-                  <td class="py-1.5 px-2.5">補回車牌：KP777</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/08 (日)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">11:15</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT2-07-J" class="text-sky-800 hover:underline">CT2 7J</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">接待位置：巴士候車室</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/08 (日)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">14:45</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT5-21-G" class="text-sky-800 hover:underline">CT5 21G</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">車牌：WY1320 (BY INTAKE APP)</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/12 (四)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">09:45</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT5-G2-G" class="text-sky-800 hover:underline">CT5 G2G</button>、<button type="button" data-jump-unit="CT3-G2-G" class="text-sky-800 hover:underline">CT3 G2G</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDE047] text-[#422006] font-bold px-1.5 py-0.5 rounded">新預約 2 伙 (黃)</span></td>
-                  <td class="py-1.5 px-2.5">CT5-G2G (車牌 CR3110) 與 CT3-G2G (車牌 UC6387) 一同 09:45 收樓</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                  <td class="py-1.5 px-2.5 font-medium whitespace-nowrap">2026/11/14 (六)</td>
-                  <td class="py-1.5 px-2.5 font-semibold">14:00</td>
-                  <td class="py-1.5 px-2.5 font-bold"><button type="button" data-jump-unit="CT3-02-E" class="text-sky-800 hover:underline">CT3 2E</button></td>
-                  <td class="py-1.5 px-2.5"><span class="bg-[#FDA4AF] text-[#881337] font-bold px-1.5 py-0.5 rounded">預約取消 (粉紅)</span></td>
-                  <td class="py-1.5 px-2.5">原預約已被移除取消</td>
+                  <td class="py-1.5 px-2.5">車牌：YV4105</td>
                 </tr>
               </tbody>
             </table>
@@ -486,6 +403,30 @@
         <!-- Earlier Update Batches (Hidden by default unless "顯示歷次更新紀錄" is clicked) -->
         <div id="earlierUpdateBatches" class="hidden space-y-3 pt-2 border-t border-slate-200">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <!-- 2026/11/02 18:47 -->
+            <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/70 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-800">🕒 2026/11/02 18:47 更新 (0648.pdf)</span>
+                <span class="text-[11px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-semibold">新增 25 伙 · 今日完成 33 伙 · 累計收樓 308 伙</span>
+              </div>
+              <ul class="space-y-1 text-slate-600 list-disc list-inside">
+                <li><strong>新增預約：</strong>05/11 CT2-2G/CT3-2A/CT1-8G/CT5-11C；06/11 CT3-5F/CT1-1A/CT3-10J/CT5-2G；07/11 CT3-25B/CT3-6B/CT5-23A/CT1-16C/CT2-12J/CT3-7A/CT5-17A/CT2-16C/CT5-15D(VIP NO.20)；08/11 CT2-9F/CT5-20H/CT5-10G/CT1-1H/CT5-17G/CT3-17C；14/11 CT3-21H</li>
+                <li><strong>狀態與收樓：</strong>今日 11/02 傍晚 9 伙全數圓滿完成交樓（今日累計 33 伙收樓）；執行 72 小時新預約規則</li>
+              </ul>
+            </div>
+
+            <!-- 2026/11/02 15:12 -->
+            <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/70 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-800">🕒 2026/11/02 15:12 更新 (0328.pdf)</span>
+                <span class="text-[11px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-semibold">新增 9 伙 · 日間收樓 24 伙 · 累計收樓 299 伙</span>
+              </div>
+              <ul class="space-y-1 text-slate-600 list-disc list-inside">
+                <li><strong>新增預約：</strong>04/11 CT2-5J、CT1-8C、CT2-22C；05/11 CT3-9G；06/11 CT5-1J；08/11 CT2-7J、CT5-21G；12/11 CT5-G2G、CT3-G2G</li>
+                <li><strong>改期及取消：</strong>CT1-9C 改 15:30；CT3-G2D 改 14:00；CT5-12F 補車牌 KP777；CT3-2E 取消預約</li>
+              </ul>
+            </div>
+
             <!-- 2026/11/01 17:52 -->
             <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/70 space-y-1.5">
               <div class="flex items-center justify-between">
@@ -1336,7 +1277,7 @@
       "fullDate": "2026/11/03 (星期二) / 07 (星期六)",
       "sortKey": "2026-11-03T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜BY INTAKE APP（03/11 10:30 及 07/11 11:15 均有預約登記）"
@@ -1456,7 +1397,7 @@
       "fullDate": "2026/11/11 (星期三)",
       "sortKey": "2026-11-11T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: SP1560｜CT1-6B, CT3-16A 一同 09:45 收樓"
@@ -1486,7 +1427,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: GTR8"
@@ -1536,7 +1477,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: JX684｜CT3-6A, CT2-21C, CT1-2G, CT3-5A, CT2-20C, CT1-2H 同業主 14:45 收樓"
@@ -1546,7 +1487,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: MW4333｜CT3-6A, CT2-21C, CT1-2G, CT3-5A, CT2-20C, CT1-2H 同業主 14:45 收樓"
@@ -1556,7 +1497,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -1576,7 +1517,7 @@
       "fullDate": "2026/11/08 (星期日)",
       "sortKey": "2026-11-08T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: UZ716"
@@ -1586,7 +1527,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜CT1-7A, CT2-5A, CT2-8C 一同 09:45 收樓"
@@ -1616,10 +1557,10 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "接待位置: 巴士候車室｜CT1-12A, CT2-9C, CT5-22D 同業主"
+      "note": "接待位置: 巴士候車室｜CT1-12A, CT2-9C, CT5-22D 同業主（已收樓）"
     },
     "G2-G": {
       "ddmm": "05/11",
@@ -1636,7 +1577,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: TU2648"
@@ -1646,7 +1587,7 @@
       "fullDate": "2026/11/09 (星期一)",
       "sortKey": "2026-11-09T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -1656,7 +1597,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -1666,7 +1607,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZW3259/SK722｜CT1-9A, CT3-7A, CT3-8A, CT3-9A 一同 14:00 收樓"
@@ -1740,6 +1681,36 @@
       "vip": false,
       "tag": "",
       "note": "車牌: FG1688 (BY INTAKE APP)"
+    },
+    "08-G": {
+      "ddmm": "05/11",
+      "fullDate": "2026/11/05 (星期四)",
+      "sortKey": "2026-11-05T15:30",
+      "time": "15:30",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: VL3988｜CT1-8G, CT5-11C 一同 15:30 收樓"
+    },
+    "02-F": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T12:00",
+      "time": "12:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: KF99/GT720｜CT2-3C, CT2-21G, CT1-2F 同業主，一同 12:00 收樓"
+    },
+    "01-H": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T09:45",
+      "time": "09:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: VH5776｜CT5-10G, CT1-1H 一同 09:45 收樓"
     }
   },
   "CT2": {
@@ -2448,10 +2419,10 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T16:15",
       "time": "16:15",
-      "status": "updated",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "接待位置: 巴士候車室｜CT1-12A, CT2-9C, CT5-22D 同業主 (原約 03/11 改期至 02/11 16:15)"
+      "note": "接待位置: 巴士候車室｜CT1-12A, CT2-9C, CT5-22D 同業主 (原約 03/11 改期至 02/11 16:15)（已收樓）"
     },
     "G2-G": {
       "ddmm": "03/11",
@@ -2478,10 +2449,10 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "車牌: TW4267"
+      "note": "車牌: TW4267（已收樓）"
     },
     "03-G": {
       "ddmm": "30/10",
@@ -2538,7 +2509,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: WV1213｜CT3-12G, CT2-3J, CT5-28C 一同 14:45 收樓"
@@ -2548,17 +2519,17 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "接待位置: 後補"
+      "note": "接待位置: 後補（已收樓）"
     },
     "21-C": {
       "ddmm": "06/11",
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: JX684｜CT3-6A, CT2-21C, CT1-2G, CT3-5A, CT2-20C, CT1-2H 同業主 14:45 收樓"
@@ -2568,7 +2539,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: MW4333｜CT3-6A, CT2-21C, CT1-2G, CT3-5A, CT2-20C, CT1-2H 同業主 14:45 收樓"
@@ -2578,7 +2549,7 @@
       "fullDate": "2026/11/09 (星期一)",
       "sortKey": "2026-11-09T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -2608,7 +2579,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜CT1-7A, CT2-5A, CT2-8C 一同 09:45 收樓"
@@ -2618,7 +2589,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜CT1-7A, CT2-5A, CT2-8C 一同 09:45 收樓"
@@ -2628,7 +2599,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌/登記: KONG S"
@@ -2648,7 +2619,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -2658,7 +2629,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 收樓處等｜CT2-2J, CT2-12E 為親屬一同收樓"
@@ -2668,7 +2639,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 收樓處等｜CT2-2J, CT2-12E 為親屬一同收樓"
@@ -2678,7 +2649,7 @@
       "fullDate": "2026/11/08 (星期日)",
       "sortKey": "2026-11-08T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -2688,7 +2659,7 @@
       "fullDate": "2026/11/08 (星期日)",
       "sortKey": "2026-11-08T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜於 29/10 原約 06/11 即日改約 08/11"
@@ -2698,7 +2669,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: UD1223"
@@ -2708,7 +2679,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 後補｜BY INTAKE APP"
@@ -2728,7 +2699,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: SR4999"
@@ -2872,6 +2843,66 @@
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
+    },
+    "02-G": {
+      "ddmm": "05/11",
+      "fullDate": "2026/11/05 (星期四)",
+      "sortKey": "2026-11-05T14:45",
+      "time": "14:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室｜CT2-2G, CT3-2A 同業主，一同 14:45 收樓"
+    },
+    "03-C": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T12:00",
+      "time": "12:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: KF99/GT720｜CT2-3C, CT2-21G, CT1-2F 同業主，一同 12:00 收樓"
+    },
+    "21-G": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T12:00",
+      "time": "12:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: KF99/GT720｜CT2-3C, CT2-21G, CT1-2F 同業主，一同 12:00 收樓"
+    },
+    "19-B": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T16:15",
+      "time": "16:15",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: XT6958｜CT2-19B, CT5-15G 同業主 16:15 收樓"
+    },
+    "03-D": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T14:00",
+      "time": "14:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 人閘"
+    },
+    "G1-E": {
+      "ddmm": "12/11",
+      "fullDate": "2026/11/12 (星期四)",
+      "sortKey": "2026-11-12T09:45",
+      "time": "09:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: YL1681"
     }
   },
   "CT3": {
@@ -3740,7 +3771,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌：ZE2991"
@@ -3800,17 +3831,17 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "CT3-18D, CT3-18E, CT3-8E, CT5-25F 一同 14:00 收樓"
+      "note": "CT3-18D, CT3-18E, CT3-8E, CT5-25F 一同 14:00 收樓（已收樓）"
     },
     "23-J": {
       "ddmm": "04/11",
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: XV4517"
@@ -3820,7 +3851,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: YP7177"
@@ -3830,7 +3861,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": true,
       "tag": "VIP",
       "note": "車牌: VM411｜VIP｜CT3-22J, CT5-6C 一同 09:45 收樓"
@@ -3840,7 +3871,7 @@
       "fullDate": "2026/11/11 (星期三)",
       "sortKey": "2026-11-11T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: SP1560｜CT1-6B, CT3-16A 一同 09:45 收樓"
@@ -3860,17 +3891,17 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "接待位置: 後補｜CT3-18D, CT3-18E, CT3-8E, CT5-25F, CT3-17J 一同 14:00 收樓"
+      "note": "接待位置: 後補｜CT3-18D, CT3-18E, CT3-8E, CT5-25F, CT3-17J 一同 14:00 收樓（已收樓）"
     },
     "12-G": {
       "ddmm": "07/11",
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: WV1213｜CT3-12G, CT2-3J, CT5-28C 一同 14:45 收樓"
@@ -3890,17 +3921,17 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "車牌: AT521"
+      "note": "車牌: AT521（已收樓）"
     },
     "06-E": {
       "ddmm": "03/11",
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -3910,7 +3941,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: YG7544"
@@ -3920,7 +3951,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 後補｜有線可能拍攝"
@@ -3940,7 +3971,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: MW4333｜CT3-6A, CT2-21C, CT1-2G, CT3-5A, CT2-20C, CT1-2H 同業主 14:45 收樓"
@@ -3950,7 +3981,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -3970,7 +4001,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: VL6870"
@@ -3980,7 +4011,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -4010,7 +4041,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: SL6988"
@@ -4020,7 +4051,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZK612"
@@ -4040,7 +4071,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: LW819"
@@ -4050,7 +4081,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -4080,7 +4111,7 @@
       "fullDate": "2026/11/09 (星期一)",
       "sortKey": "2026-11-09T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: FF8825 / SS6984"
@@ -4090,7 +4121,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 後補"
@@ -4100,7 +4131,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -4110,7 +4141,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZW3259/SK722｜CT1-9A, CT3-7A, CT3-8A, CT3-9A 一同收樓"
@@ -4120,7 +4151,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZW3259/SK722｜CT1-9A, CT3-7A, CT3-8A, CT3-9A 一同收樓"
@@ -4130,7 +4161,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜CT3-1H, CT5-G2C 一同 16:15 收樓"
@@ -4140,7 +4171,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZW3259/SK722｜CT1-9A, CT3-7A, CT3-8A, CT3-9A 一同收樓"
@@ -4150,7 +4181,7 @@
       "fullDate": "2026/11/12 (星期四)",
       "sortKey": "2026-11-12T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -4160,7 +4191,7 @@
       "fullDate": "2026/11/13 (星期五)",
       "sortKey": "2026-11-13T12:00",
       "time": "12:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 後補"
@@ -4180,7 +4211,7 @@
       "fullDate": "2026/11/16 (星期一)",
       "sortKey": "2026-11-16T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -4236,14 +4267,64 @@
       "note": "BY INTAKE APP"
     },
     "G2-G": {
-      "ddmm": "12/11",
-      "fullDate": "2026/11/12 (星期四)",
-      "sortKey": "2026-11-12T09:45",
+      "ddmm": "13/11",
+      "fullDate": "2026/11/13 (星期五)",
+      "sortKey": "2026-11-13T14:00",
+      "time": "14:00",
+      "status": "updated",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: UC6387｜CT5-G2G, CT3-G2G 一同 09:45 收樓 (原約 12/11 09:45 改約 13/11 14:00)"
+    },
+    "02-A": {
+      "ddmm": "05/11",
+      "fullDate": "2026/11/05 (星期四)",
+      "sortKey": "2026-11-05T14:45",
+      "time": "14:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室｜CT2-2G, CT3-2A 同業主，一同 14:45 收樓"
+    },
+    "05-F": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T09:45",
       "time": "09:45",
       "status": "new",
       "vip": false,
       "tag": "",
-      "note": "車牌: UC6387｜CT5-G2G, CT3-G2G 一同 09:45 收樓"
+      "note": "接待位置: 巴士候車室"
+    },
+    "01-C": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T14:45",
+      "time": "14:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室"
+    },
+    "07-H": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T15:30",
+      "time": "15:30",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室｜CT3-7H, CT5-5A 一同 15:30 收樓"
+    },
+    "02-D": {
+      "ddmm": "09/11",
+      "fullDate": "2026/11/09 (星期一)",
+      "sortKey": "2026-11-09T10:30",
+      "time": "10:30",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室"
     }
   },
   "CT5": {
@@ -4982,7 +5063,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌：JT700"
@@ -4992,7 +5073,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌：XD8428"
@@ -5172,7 +5253,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5182,7 +5263,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": true,
       "tag": "VIP",
       "note": "車牌: VM411｜VIP｜CT3-22J, CT5-6C 一同 09:45 收樓"
@@ -5192,7 +5273,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T09:45",
       "time": "09:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: PC3523"
@@ -5222,7 +5303,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: KK116"
@@ -5232,7 +5313,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: WV1213｜CT3-12G, CT2-3J, CT5-28C 一同 14:45 收樓"
@@ -5242,7 +5323,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5262,7 +5343,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5282,7 +5363,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: LN6855｜BY INTAKE APP"
@@ -5292,7 +5373,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T12:00",
       "time": "12:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5312,7 +5393,7 @@
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5322,7 +5403,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5342,7 +5423,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T12:00",
       "time": "12:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5352,7 +5433,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: CJ1127"
@@ -5362,7 +5443,7 @@
       "fullDate": "2026/11/14 (星期六)",
       "sortKey": "2026-11-14T11:15",
       "time": "11:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5382,7 +5463,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: LOG10"
@@ -5392,7 +5473,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZT7644｜CT5-G2F 及 CT5-2A 同時 10:30 收樓"
@@ -5402,7 +5483,7 @@
       "fullDate": "2026/11/06 (星期五)",
       "sortKey": "2026-11-06T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: ZT7644｜CT5-G2F 及 CT5-2A 同時 10:30 收樓"
@@ -5452,10 +5533,10 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "接待位置: 巴士候車室｜CT1-12A, CT2-9C, CT5-22D 同業主"
+      "note": "接待位置: 巴士候車室｜CT1-12A, CT2-9C, CT5-22D 同業主（已收樓）"
     },
     "12-F": {
       "ddmm": "07/11",
@@ -5502,17 +5583,17 @@
       "fullDate": "2026/11/02 (星期一)",
       "sortKey": "2026-11-02T15:30",
       "time": "15:30",
-      "status": "new",
+      "status": "completed",
       "vip": false,
       "tag": "",
-      "note": "接待位置: 後補"
+      "note": "接待位置: 後補（已收樓）"
     },
     "11-B": {
       "ddmm": "03/11",
       "fullDate": "2026/11/03 (星期二)",
       "sortKey": "2026-11-03T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5522,7 +5603,7 @@
       "fullDate": "2026/11/04 (星期三)",
       "sortKey": "2026-11-04T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室"
@@ -5532,7 +5613,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T10:30",
       "time": "10:30",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 後補"
@@ -5552,7 +5633,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T14:00",
       "time": "14:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 後補"
@@ -5562,7 +5643,7 @@
       "fullDate": "2026/11/05 (星期四)",
       "sortKey": "2026-11-05T14:45",
       "time": "14:45",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: VP8222"
@@ -5572,7 +5653,7 @@
       "fullDate": "2026/11/07 (星期六)",
       "sortKey": "2026-11-07T16:15",
       "time": "16:15",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "接待位置: 巴士候車室｜CT3-1H, CT5-G2C 一同 16:15 收樓"
@@ -5582,7 +5663,7 @@
       "fullDate": "2026/11/08 (星期日)",
       "sortKey": "2026-11-08T12:00",
       "time": "12:00",
-      "status": "new",
+      "status": "normal",
       "vip": false,
       "tag": "",
       "note": "車牌: LG2393"
@@ -5750,12 +5831,12 @@
     "15-D": {
       "ddmm": "10/11",
       "fullDate": "2026/11/10 (星期二)",
-      "sortKey": "2026-11-10T15:30",
-      "time": "15:30",
-      "status": "new",
-      "vip": false,
-      "tag": "",
-      "note": "車牌: VL476"
+      "sortKey": "2026-11-10T12:00",
+      "time": "12:00",
+      "status": "updated",
+      "vip": true,
+      "tag": "VIP NO.20",
+      "note": "車牌: VL476｜VIP NO.20 (原約 15:30 提早至 12:00)"
     },
     "01-J": {
       "ddmm": "06/11",
@@ -5778,14 +5859,134 @@
       "note": "車牌: WY1320 (BY INTAKE APP)"
     },
     "G2-G": {
-      "ddmm": "12/11",
-      "fullDate": "2026/11/12 (星期四)",
-      "sortKey": "2026-11-12T09:45",
+      "ddmm": "13/11",
+      "fullDate": "2026/11/13 (星期五)",
+      "sortKey": "2026-11-13T14:00",
+      "time": "14:00",
+      "status": "updated",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: CR3110｜CT5-G2G, CT3-G2G 一同 09:45 收樓 (原約 12/11 09:45 改約 13/11 14:00)"
+    },
+    "11-C": {
+      "ddmm": "05/11",
+      "fullDate": "2026/11/05 (星期四)",
+      "sortKey": "2026-11-05T15:30",
+      "time": "15:30",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: VL3988｜CT1-8G, CT5-11C 一同 15:30 收樓"
+    },
+    "03-A": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T11:15",
+      "time": "11:15",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: LL728"
+    },
+    "06-H": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T14:00",
+      "time": "14:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室"
+    },
+    "02-C": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T14:00",
+      "time": "14:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: TT8278"
+    },
+    "21-E": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T14:45",
+      "time": "14:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 後補 (BY INTAKE APP)"
+    },
+    "15-G": {
+      "ddmm": "06/11",
+      "fullDate": "2026/11/06 (星期五)",
+      "sortKey": "2026-11-06T16:15",
+      "time": "16:15",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: XT6958｜CT2-19B, CT5-15G 同業主 16:15 收樓"
+    },
+    "05-C": {
+      "ddmm": "07/11",
+      "fullDate": "2026/11/07 (星期六)",
+      "sortKey": "2026-11-07T14:00",
+      "time": "14:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: HM7567"
+    },
+    "19-C": {
+      "ddmm": "07/11",
+      "fullDate": "2026/11/07 (星期六)",
+      "sortKey": "2026-11-07T14:45",
+      "time": "14:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: YM2566"
+    },
+    "10-G": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T09:45",
       "time": "09:45",
       "status": "new",
       "vip": false,
       "tag": "",
-      "note": "車牌: CR3110｜CT5-G2G, CT3-G2G 一同 09:45 收樓"
+      "note": "車牌: VH5776｜CT5-10G, CT1-1H 一同 09:45 收樓"
+    },
+    "10-H": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T14:00",
+      "time": "14:00",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: NU1378"
+    },
+    "05-A": {
+      "ddmm": "08/11",
+      "fullDate": "2026/11/08 (星期日)",
+      "sortKey": "2026-11-08T15:30",
+      "time": "15:30",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "接待位置: 巴士候車室｜CT3-7H, CT5-5A 一同 15:30 收樓"
+    },
+    "16-C": {
+      "ddmm": "05/11",
+      "fullDate": "2026/11/05 (星期四)",
+      "sortKey": "2026-11-05T09:45",
+      "time": "09:45",
+      "status": "new",
+      "vip": false,
+      "tag": "",
+      "note": "車牌: YV4105"
     }
   }
 };
@@ -6643,7 +6844,7 @@
         document.getElementById("searchInput").value = "";
         document.getElementById("btnClearSearch").classList.add("hidden");
         renderAll();
-        showToast("已還原全屋苑 4 座預設預約資料 (2026/11/02 15:12 版本)");
+        showToast("已還原全屋苑 4 座預設預約資料 (2026/11/02 19:01 版本)");
       });
     });
   </script>
